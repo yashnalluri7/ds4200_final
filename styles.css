@@ -89,7 +89,7 @@ body {
 /* Hero section */
 .main {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     padding: 4rem 2rem;
     background: linear-gradient(to bottom right, #eef2ff, #f8fafc);
@@ -99,8 +99,8 @@ body {
 .main__container {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
-    text-align: center;
+    max-width: 1920px;
+    text-align: left;
 }
 
 .main__content h1 {
@@ -118,7 +118,7 @@ body {
 .main__content p {
     font-size: 1rem;
     color: #4b5563;
-    max-width: 600px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 
@@ -137,6 +137,10 @@ footer {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.main-content ul {
+    padding: 1px;
+  }
 
 .footer-links ul {
     list-style: none;
@@ -185,12 +189,12 @@ footer {
 .conclusion-section {
     background-color: #f9f9f9;
     padding: 60px 20px;
-    text-align: center;
+    text-align: left;
     border-top: 2px solid #eee;
 }
 
 .conclusion-container {
-    max-width: 800px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 

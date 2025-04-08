@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes, Demographic Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" id="navbar__logo">
+                <span class="logo-long">Group 26</span>
+                <span class="logo-short">G26</span>
+            </a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="" class="navbar__links"> Overall Analysis</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="" class="button">Test Our Prediction!</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="similarityNetworkContainer">
+        <h2> Patient Similarity Network </h2>
+        <img src="network.png" width="800" height="800"></img>
+    </div>  
+
+    <div id="barplotContainer">
+        <h2>Interactive Distribution of Diabetes Prefactors</h2>
+        <div id="barplot"></div>
+        <script>
+            vegaEmbed('#vis', 'stacked_bar.json')
+            .then(function(result) {
+                // Chart is successfully rendered
+            })
+            .catch(console.error);
+        </script>
+    </div>
+    <!-- Conclusions Section -->
+    <section class="conclusion-section">
+        <div class="conclusion-container">
+            <h2>Conclusions</h2>
+            <p>
+                The Patient Similarity Network shows a sample from the 
+                dataset of of 1,000 individuals stratified by diabetes status,
+                where each node represents a patient and is connected to their
+                most similar counterpart based on the factors that were deemed
+                as controllable. These factors include: smoking habits,
+                fruit and vegetable consumption, education level, alcohol
+                consumption, and healthcare coverage. Each node is color-coded
+                according to their diabetes diagnosis: blue for no diabetes,
+                orange for pre-diabetes, and red for diabetes. This reveals
+                several key patterns. Most clusters are predominantly blue,
+                indicating that individuals without diabetes tend to have the
+                most similar features, likely sharing similar health or
+                behavioral characteristics. However, several clusters exhibit
+                a mix of orange and red nodes, suggesting that individuals
+                with pre-diabetes or diabetes often resemble non-diabetic
+                patients, calling into question whether these controllable
+                factors play a considerable difference in determining whether a
+                patient has diabetes.
+            </p>
+
+            <p>
+
+            </p>
+        </div>
+    </section>
+    
+
+    <script src="uncont.js"></script>
+</body>
+</html>
