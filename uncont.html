@@ -38,31 +38,36 @@
     </div>
   </nav>
 
-  <!-- Sankey Diagram -->
-  <div class="graph-wrapper">
-    <h2>Immutable Health Indicators of Diabetic Condition</h2>
-    <div id="sankeyPlotContainer"></div>
-  </div>
+  <!-- Main Content Wrapper -->
+  <div class="main">
+    <div class="main__container">
 
-  <!-- Correlation Matrix -->
-  <div class="graph-wrapper">
-    <h2>Comparing Immutable Health Indicators</h2>
-    <div id="corrMatrixContainer"></div>
-  </div>
+      <div class="graph-wrapper">
+        <h2>Immutable Health Indicators of Diabetic Condition</h2>
+        <div id="sankeyPlotContainer"></div>
+      </div>
 
-  <!-- Conclusions Section -->
-  <section class="conclusion-section">
-    <div class="conclusion-container">
-      <h2>Conclusions</h2>
-      <p>
-        The first diagram is a Sankey plot that shows the strength of flows from each diagnostic label of diabetes—No Diabetes, Prediabetic, or Diabetic—to the relative level of immutable health indicators in the dataset. The Diabetic category had the highest proportion of relative "bad" indicators, with notable representation in High Cholesterol, High Blood Pressure, and High BMI. These values are much higher in proportion than what is seen in the Prediabetic and Non-Diabetic groups, supporting the idea that unfavorable immutable indicators are somewhat correlated with a diabetes diagnosis.
-      </p>
-      <p>
-        The second diagram is a correlation matrix between the six immutable indicators—High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health—and the three diabetes classifications. The matrix, calculated using Pearson correlation, ranges from -1 (strong negative correlation) to 1 (strong positive correlation). Most indicators showed weak positive correlation with diabetes status, while the non-diabetic classification tended to correlate negatively. This visualization suggests patterns but calls for more diverse and specific data to draw strong conclusions.
-      </p>
+      <div class="graph-wrapper">
+        <h2>Comparing Immutable Health Indicators</h2>
+        <div id="corrMatrixContainer"></div>
+      </div>
+
+      <section class="conclusion-section">
+        <div class="conclusion-container">
+          <h2>Conclusions</h2>
+          <p>
+            The first diagram is a Sankey plot that shows the strength of flows from each diagnostic label of diabetes—No Diabetes, Prediabetic, or Diabetic—to the relative level of immutable health indicators in the dataset. The Diabetic category had the highest proportion of relative "bad" indicators, with notable representation in High Cholesterol, High Blood Pressure, and High BMI. These values are much higher in proportion than what is seen in the Prediabetic and Non-Diabetic groups, supporting the idea that unfavorable immutable indicators are somewhat correlated with a diabetes diagnosis.
+          </p>
+          <p>
+            The second diagram is a correlation matrix between the six immutable indicators—High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health—and the three diabetes classifications. The matrix, calculated using Pearson correlation, ranges from -1 (strong negative correlation) to 1 (strong positive correlation). Most indicators showed weak positive correlation with diabetes status, while the non-diabetic classification tended to correlate negatively. This visualization suggests patterns but calls for more diverse and specific data to draw strong conclusions.
+          </p>
+        </div>
+      </section>
+
     </div>
-  </section>
+  </div>
 
+  <!-- JavaScript -->
   <script src="uncont.js"></script>
 </body>
 </html>
