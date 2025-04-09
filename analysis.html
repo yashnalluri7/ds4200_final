@@ -1,6 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overall Analysis | Diabetes Indicators</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="main__container">
+      <section class="conclusion-section">
+        <div class="conclusion-container">
+          <h2 class="chart-title">Final Project Conclusions</h2>
+
+          <p>
+            Our analysis of diabetes health indicators reveals several significant insights about the relationship between diabetes diagnoses and various health factors. We began with the general purpose of seeing if we could determine the likelihood of diabetes to be linked to several mutable and immutable indicators.
+          </p>
+
+          <p>
+            We split the mutable factors and immutable factors evenly from the top 12 features identified via a Random Forest model’s feature importance metric. From a demographic standpoint, age had a clearly increasing effect: for each diagnosis category, the rate of diabetes noticeably increased after age 50. However, when each group of features was examined independently, these relationships became more nuanced.
+          </p>
+
+          <p>
+            <strong>Mutable/Controllable Factors:</strong> The Patient Similarity Network offered key insights. While diabetic individuals were often linked by similar lifestyles (e.g., smoking, inactivity), they were distributed across the network rather than forming concentrated groups. This suggests that lifestyle-related factors alone do not predict diabetes strongly—especially in a general population.
+          </p>
+
+          <p>
+            <strong>Immutable/Uncontrollable Factors:</strong> The correlation matrix revealed a consistent—though weak—positive correlation between a diabetes diagnosis and immutable indicators like High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health. While the relationship was not strong enough to be definitive, it signals a reliable trend worth investigating further.
+          </p>
+
+          <p>
+            In conclusion, diabetes cannot be attributed to any one factor, but rather a complex blend of both controllable and uncontrollable indicators. Data-driven insights like these can help shape better prevention strategies, guide policy interventions, and personalize healthcare recommendations for those at risk.
+          </p>
+
+          <h3 class="chart-title" style="margin-top: 2rem;">Thank you for exploring our project!</h3>
+<div style="width: 100%; margin-top: 2rem;">
+  <img src="people.png"
+       alt="Illustration of diverse people"
+       style="
+         width: 100%;
+         opacity: 0.65;
+         display: block;
+         margin: 0 auto;
+         border-radius: 0;
+         box-shadow: none;
+       " />
+</div>
+
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diabetes, Demographic Information</title>
@@ -73,3 +151,4 @@
     <script src="uncont.js"></script> <!-- Now it contains sankey code too -->
 </body>
 </html>
+

@@ -343,7 +343,7 @@ d3.csv("data.csv").then(function(data) {
     // Title
     svgCorrHeatmap.append("text")
         .attr("x", corrWidth / 2)
-        .attr("y", -10)
+        .attr("y", -20)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .text("Correlation Matrix: Health Indicators + Diabetes Status");

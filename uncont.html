@@ -1,80 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes, Demographic Information</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes, Demographic Information</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" id="navbar__logo">
-                <span class="logo-long">Group 26</span>
-                <span class="logo-short">G26</span>
-            </a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="controllables.html" class="navbar__links">Controllable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="analysis.html" class="navbar__links">Overall Analysis</a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="predictor.html" class="button">Test Our Prediction!</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="sankeyPlotContainer">
-        <h2> Immutable Health Indicators of Diabetic Condition </h2>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
     </div>
-    <div id="corrMatrixContainer">
-        <h2> Comparing Immutable Health Indicators Performance</h2>
-        <svg id="svg" width="600" height="400"></svg>
-    </div>
+  </nav>
 
-    <!-- Conclusions Section -->
-    <section class="conclusion-section">
+  <!-- Main Content Wrapper -->
+  <div class="main">
+    <div class="main__container">
+
+      <div class="graph-wrapper">
+        <h2>Immutable Health Indicators of Diabetic Condition</h2>
+        <div id="sankeyPlotContainer"></div>
+      </div>
+
+      <div class="graph-wrapper">
+        <h2>Comparing Immutable Health Indicators</h2>
+        <div id="corrMatrixContainer"></div>
+      </div>
+
+      <section class="conclusion-section">
         <div class="conclusion-container">
-            <h2>Conclusions</h2>
-            <p>
-                The first diagram is a sankey plot that shows the strength of flows from each diagnostic label of diabetes, that being 
-                either No Diabetes, Prediabetic, or Diabetic, to the relative level of the immutable health indicators of the dataset. The 
-                largest input group was the No Diabetes, followed by Diabetic and Prediabetic groups. The distribution of people in each 
-                relative health indicator category was quite even across the dataset. As one would expect of someone with a diagnosis of Diabetes,
-                that category had the highest proportion of relative "bad" indicators, as it had 106 people for High Cholesterol, 106 for having High 
-                Blood Pressure and 94 people for High BMI. These values are much higher in proportion than what can be seen in the Prediabetic and Non Diabetic
-                groups, which lends credibility to the idea that a classification relative "bad" health indicator is somewhat correlated with 
-                a diagnosis of Diabetes.
-            </p>
-
-            <p> 
-                The second diagram is a correlation matrix between the six "immutable" indicators that we looked at -- High Blood Pressure, 
-                High Cholesterol, BMI, Age, Sex, General Health -- in comparison with the three categories of Diabetes diagnosis. The matrix was 
-                calculated using a Pearson Correlation function, and the scores range between -1 and 1, with the -1 score indicating a perfectly strong 
-                negative correlation of the data, and a 1 indicating a perfectly strong positive correlation. The graph also used a sample size of
-                1000.
-                Some general trends include the weak positive correlation between a Diabetes diagnosis and the six immutable indicators, which would generally
-                not be conclusive enough to prove the hypothesis but hints at a particular trend, especially because the only column to show consistent
-                weak negative correlation is the nondiabetic diagnosis category. Therefore, this graph should encourage more research on this particular
-                type of indicator, and should signify a need for more diverse and specific data.
-            </p>
+          <h2>Conclusions</h2>
+          <p>
+           The first diagram is a sankey plot that shows the strength of flows from each diagnostic label of diabetes, that being either No Diabetes, Prediabetic, or Diabetic, to the relative level of the immutable health indicators of the dataset. The largest input group was the No Diabetes, followed by Diabetic and Prediabetic groups. The distribution of people in each relative health indicator category was quite even across the dataset. As one would expect of someone with a diagnosis of Diabetes, that category had the highest proportion of relative "bad" indicators, as it had 106 people for High Cholesterol, 106 for having High Blood Pressure and 94 people for High BMI. These values are much higher in proportion than what can be seen in the Prediabetic and Non Diabetic groups, which lends credibility to the idea that a classification relative "bad" health indicator is somewhat correlated with a diagnosis of Diabetes.
+          </p>
+          <p>
+           The second diagram is a correlation matrix between the six "immutable" indicators that we looked at -- High Blood Pressure, High Cholesterol, BMI, Age, Sex, General Health -- in comparison with the three categories of Diabetes diagnosis. The matrix was calculated using a Pearson Correlation function, and the scores range between -1 and 1, with the -1 score indicating a perfectly strong negative correlation of the data, and a 1 indicating a perfectly strong positive correlation. The graph also used a sample size of 1000. Some general trends include the weak positive correlation between a Diabetes diagnosis and the six immutable indicators, which would generally not be conclusive enough to prove the hypothesis but hints at a particular trend, especially because the only column to show consistent weak negative correlation is the nondiabetic diagnosis category. Therefore, this graph should encourage more research on this particular type of indicator, and should signify a need for more diverse and specific data.
+          </p>
         </div>
-    </section>
-    
+      </section>
 
-    <script src="uncont.js"></script> <!-- Now it contains sankey code too -->
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="uncont.js"></script>
 </body>
 </html>
