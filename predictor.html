@@ -166,34 +166,35 @@
   <script src="model.js"></script>
 
   <!-- Prediction logic -->
-  <script>
-    document.getElementById("predict-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+<script>
+  document.getElementById("predict-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const inputs = [
-        parseFloat(document.getElementById("BMI").value),
-        parseFloat(document.getElementById("Age").value),
-        parseInt(document.getElementById("Sex").value),
-        parseInt(document.getElementById("HighChol").value),
-        parseInt(document.getElementById("HighBP").value),
-        parseInt(document.getElementById("GenHlth").value),
-        parseInt(document.getElementById("Smoker").value),
-        parseInt(document.getElementById("PhysHlth").value),
-        parseInt(document.getElementById("Fruits").value),
-        parseInt(document.getElementById("Income").value),
-        parseInt(document.getElementById("MentHlth").value),
-        parseInt(document.getElementById("Education").value),
-      ];
+    const input = new Array(22).fill(0);
+    input[3] = parseFloat(document.getElementById("BMI").value);
+    input[18] = parseInt(document.getElementById("Age").value);
+    input[21] = parseInt(document.getElementById("Income").value);
+    input[15] = parseFloat(document.getElementById("PhysHlth").value);
+    input[13] = parseInt(document.getElementById("GenHlth").value);
+    input[20] = parseInt(document.getElementById("Education").value);
+    input[14] = parseFloat(document.getElementById("MentHlth").value);
+    input[4] = parseInt(document.getElementById("Smoker").value);
+    input[0] = parseInt(document.getElementById("HighBP").value);
+    input[17] = parseInt(document.getElementById("Sex").value);
+    input[10] = parseInt(document.getElementById("Fruits").value);
+    input[1] = parseInt(document.getElementById("HighChol").value);
 
-      const prediction = score(inputs);
-      let label = "";
+    const probs = score(input);  // this gives an array
+    const prediction = probs.indexOf(Math.max(...probs));  // find index of max value
 
-      if (prediction === 0) label = "No Diabetes";
-      else if (prediction === 1) label = "⚠Prediabetic";
-      else label = "Diabetic";
+    let label = "";
 
-      document.getElementById("result").innerText = "Prediction: " + label;
-    });
-  </script>
+    if (prediction === 0) label = "✅ No Diabetes";
+    else if (prediction === 1) label = "⚠️ Prediabetic";
+    else label = "🔴 Diabetic";
+
+    document.getElementById("result").innerText = "Prediction: " + label;
+  });
+</script>
 </body>
 </html>
