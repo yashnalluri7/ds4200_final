@@ -11,54 +11,29 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
-    #barplotContainer {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2rem;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 2rem auto;
+    .graph-container {
       background: white;
-      padding: 2rem;
       border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 1000px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .graph-container img {
+      max-width: 100%;
+      height: auto;
     }
 
     #barplot {
-      flex: 2;
-      min-width: 500px;
-    }
-
-    #controls {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 300px;
-    }
-
-    #controls label {
-      font-weight: bold;
-    }
-
-    #controls select {
-      width: 100%;
-      padding: 0.4rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .graph-wrapper {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .graph-wrapper img {
-      max-width: 100%;
-      height: auto;
-      display: block;
       margin: 0 auto;
+      max-width: 900px;
+    }
+
+    /* Hide extra control box */
+    #controls {
+      display: none;
     }
   </style>
 </head>
@@ -93,52 +68,15 @@
   </nav>
 
   <!-- Patient Similarity Network Image -->
-  <div id="similarityNetworkContainer" class="graph-wrapper">
+  <div class="graph-container">
     <h2>Patient Similarity Network</h2>
     <img src="network.png" alt="Patient Similarity Network" />
   </div>
 
-  <!-- Interactive Altair Chart + Controls -->
-  <div id="barplotContainer">
+  <!-- Interactive Altair Chart -->
+  <div class="graph-container">
+    <h2>Interactive Distribution of Diabetes Prefactors</h2>
     <div id="barplot"></div>
-    <div id="controls">
-      <label for="education">Education Level:</label>
-      <select id="education">
-        <option>High School or Less</option>
-        <option>Some College</option>
-        <option>Bachelor's or Higher</option>
-      </select>
-
-      <label for="mental">Mental Health Level:</label>
-      <select id="mental">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="income">Income Level:</label>
-      <select id="income">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="fruits">Fruits and Veggies:</label>
-      <select id="fruits">
-        <option>No</option>
-        <option>Yes</option>
-      </select>
-
-      <label for="physical">Physical Health Level:</label>
-      <select id="physical">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="smoker">Smoker:</label>
-      <select id="smoker">
-        <option>No</option>
-        <option>Yes</option>
-      </select>
-    </div>
   </div>
 
   <!-- Embed chart.json from Altair -->
