@@ -19,6 +19,7 @@
       font-size: 2rem;
       text-align: center;
       margin-bottom: 1.5rem;
+      color: #1f2937;
     }
 
     .form-group {
@@ -44,7 +45,7 @@
       width: 100%;
       padding: 0.75rem;
       font-size: 1rem;
-      background-color: #3b82f6;
+      background-color: #60a5fa;
       color: white;
       border: none;
       border-radius: 8px;
@@ -54,7 +55,7 @@
     }
 
     button:hover {
-      background-color: #2563eb;
+      background-color: #f28b82;
     }
 
     #result {
@@ -91,119 +92,108 @@
   </nav>
 
   <!-- Predictor Section -->
-  <div class="graph-container">
-    <h2>🧠 Diabetes Risk Predictor</h2>
-    <form id="predict-form">
-      <div class="form-group">
-        <label for="BMI">BMI:</label>
-        <input type="number" id="BMI" value="25" step="0.1" required />
+  <div class="main">
+    <div class="main__container">
+      <div class="graph-container">
+        <h2>🧠 Diabetes Risk Predictor</h2>
+        <form id="predict-form">
+          <!-- form-group blocks unchanged -->
+          <div class="form-group">
+            <label for="BMI">BMI:</label>
+            <input type="number" id="BMI" value="25" step="0.1" required />
+          </div>
+          <div class="form-group">
+            <label for="Age">Age (18–80):</label>
+            <input type="number" id="Age" value="45" required />
+          </div>
+          <div class="form-group">
+            <label for="Sex">Sex:</label>
+            <select id="Sex">
+              <option value="0">Female</option>
+              <option value="1" selected>Male</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="HighChol">High Cholesterol:</label>
+            <select id="HighChol">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="HighBP">High Blood Pressure:</label>
+            <select id="HighBP">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="GenHlth">General Health (1 = Excellent, 5 = Poor):</label>
+            <select id="GenHlth">
+              <option value="1">Excellent</option>
+              <option value="2">Very Good</option>
+              <option value="3" selected>Good</option>
+              <option value="4">Fair</option>
+              <option value="5">Poor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Smoker">Smoker:</label>
+            <select id="Smoker">
+              <option value="0">No</option>
+              <option value="1" selected>Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="PhysHlth">Physical Health (days unwell, 0–30):</label>
+            <input type="number" id="PhysHlth" value="5" min="0" max="30" required />
+          </div>
+          <div class="form-group">
+            <label for="Fruits">Fruit & Veggie Consumption:</label>
+            <select id="Fruits">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Income">Income Level (1–8):</label>
+            <select id="Income">
+              <option value="1">1 (Lowest)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8 (Highest)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="MentHlth">Mental Health (days unwell, 0–30):</label>
+            <input type="number" id="MentHlth" value="5" min="0" max="30" required />
+          </div>
+          <div class="form-group">
+            <label for="Education">Education Level (1–6):</label>
+            <select id="Education">
+              <option value="1">Never Attended</option>
+              <option value="2">Grades 1-8</option>
+              <option value="3">Grades 9-11</option>
+              <option value="4">High School Grad</option>
+              <option value="5" selected>Some College</option>
+              <option value="6">College Graduate</option>
+            </select>
+          </div>
+          <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
       </div>
-
-      <div class="form-group">
-        <label for="Age">Age (18–80):</label>
-        <input type="number" id="Age" value="45" required />
-      </div>
-
-      <div class="form-group">
-        <label for="Sex">Sex:</label>
-        <select id="Sex">
-          <option value="0">Female</option>
-          <option value="1" selected>Male</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="HighChol">High Cholesterol:</label>
-        <select id="HighChol">
-          <option value="0">No</option>
-          <option value="1">Yes</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="HighBP">High Blood Pressure:</label>
-        <select id="HighBP">
-          <option value="0">No</option>
-          <option value="1">Yes</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="GenHlth">General Health (1 = Excellent, 5 = Poor):</label>
-        <select id="GenHlth">
-          <option value="1">Excellent</option>
-          <option value="2">Very Good</option>
-          <option value="3" selected>Good</option>
-          <option value="4">Fair</option>
-          <option value="5">Poor</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="Smoker">Smoker:</label>
-        <select id="Smoker">
-          <option value="0">No</option>
-          <option value="1" selected>Yes</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="PhysHlth">Physical Health (days unwell, 0–30):</label>
-        <input type="number" id="PhysHlth" value="5" min="0" max="30" required />
-      </div>
-
-      <div class="form-group">
-        <label for="Fruits">Fruit & Veggie Consumption:</label>
-        <select id="Fruits">
-          <option value="0" selected>No</option>
-          <option value="1">Yes</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="Income">Income Level (1–8):</label>
-        <select id="Income">
-          <option value="1">1 (Lowest)</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected>4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8 (Highest)</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="MentHlth">Mental Health (days unwell, 0–30):</label>
-        <input type="number" id="MentHlth" value="5" min="0" max="30" required />
-      </div>
-
-      <div class="form-group">
-        <label for="Education">Education Level (1–6):</label>
-        <select id="Education">
-          <option value="1">Never Attended</option>
-          <option value="2">Grades 1-8</option>
-          <option value="3">Grades 9-11</option>
-          <option value="4">High School Grad</option>
-          <option value="5" selected>Some College</option>
-          <option value="6">College Graduate</option>
-        </select>
-      </div>
-
-      <button type="submit">Predict</button>
-    </form>
-
-    <div id="result"></div>
+    </div>
   </div>
 
   <script src="model.js"></script>
-
-  <!-- Prediction logic -->
   <script>
     document.getElementById("predict-form").addEventListener("submit", function (e) {
       e.preventDefault();
-
       const input = new Array(22).fill(0);
       input[3] = parseFloat(document.getElementById("BMI").value);
       input[18] = parseInt(document.getElementById("Age").value);
@@ -222,7 +212,6 @@
       const prediction = probs.indexOf(Math.max(...probs));
 
       let label = "";
-
       if (prediction === 0) label = "No Diabetes";
       else if (prediction === 1) label = "Prediabetic";
       else label = "Diabetic";
