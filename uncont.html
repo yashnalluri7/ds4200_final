@@ -1,86 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes, Demographic Information</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
-    <style>
-      .graph-wrapper {
-        max-width: 960px;
-        margin: 2rem auto;
-        padding: 1.5rem;
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        text-align: center;
-      }
-
-      .graph-wrapper h2 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-        color: #1f2937;
-      }
-
-      .graph-wrapper svg {
-        display: block;
-        margin: 0 auto;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes, Demographic Information</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" id="navbar__logo">
-                <span class="logo-long">Group 26</span>
-                <span class="logo-short">G26</span>
-            </a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="controllables.html" class="navbar__links">Controllable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="analysis.html" class="navbar__links">Overall Analysis</a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="predictor.html" class="button">Test Our Prediction!</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="graph-wrapper">
-        <h2>Immutable Health Indicators of Diabetic Condition</h2>
-        <div id="sankeyPlotContainer"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <div class="graph-wrapper">
-        <h2>Comparing Immutable Health Indicators</h2>
-        <div id="corrMatrixContainer"></div>
+  <!-- Sankey Diagram -->
+  <div class="graph-wrapper">
+    <h2>Immutable Health Indicators of Diabetic Condition</h2>
+    <div id="sankeyPlotContainer"></div>
+  </div>
+
+  <!-- Correlation Matrix -->
+  <div class="graph-wrapper">
+    <h2>Comparing Immutable Health Indicators</h2>
+    <div id="corrMatrixContainer"></div>
+  </div>
+
+  <!-- Conclusions Section -->
+  <section class="conclusion-section">
+    <div class="conclusion-container">
+      <h2>Conclusions</h2>
+      <p>
+        The first diagram is a Sankey plot that shows the strength of flows from each diagnostic label of diabetes—No Diabetes, Prediabetic, or Diabetic—to the relative level of immutable health indicators in the dataset. The Diabetic category had the highest proportion of relative "bad" indicators, with notable representation in High Cholesterol, High Blood Pressure, and High BMI. These values are much higher in proportion than what is seen in the Prediabetic and Non-Diabetic groups, supporting the idea that unfavorable immutable indicators are somewhat correlated with a diabetes diagnosis.
+      </p>
+      <p>
+        The second diagram is a correlation matrix between the six immutable indicators—High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health—and the three diabetes classifications. The matrix, calculated using Pearson correlation, ranges from -1 (strong negative correlation) to 1 (strong positive correlation). Most indicators showed weak positive correlation with diabetes status, while the non-diabetic classification tended to correlate negatively. This visualization suggests patterns but calls for more diverse and specific data to draw strong conclusions.
+      </p>
     </div>
+  </section>
 
-    <section class="conclusion-section">
-        <div class="conclusion-container">
-            <h2>Conclusions</h2>
-            <p>
-                The first diagram is a Sankey plot that shows the strength of flows from each diagnostic label of diabetes—No Diabetes, Prediabetic, or Diabetic—to the relative level of immutable health indicators in the dataset. The Diabetic category had the highest proportion of relative "bad" indicators, with notable representation in High Cholesterol, High Blood Pressure, and High BMI. These values are much higher in proportion than what is seen in the Prediabetic and Non-Diabetic groups, supporting the idea that unfavorable immutable indicators are somewhat correlated with a diabetes diagnosis.
-            </p>
-            <p>
-                The second diagram is a correlation matrix between the six immutable indicators—High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health—and the three diabetes classifications. The matrix, calculated using Pearson correlation, ranges from -1 (strong negative correlation) to 1 (strong positive correlation). Most indicators showed weak positive correlation with diabetes status, while the non-diabetic classification tended to correlate negatively. This visualization suggests patterns but calls for more diverse and specific data to draw strong conclusions.
-            </p>
-        </div>
-    </section>
-
-    <script src="uncont.js"></script>
+  <script src="uncont.js"></script>
 </body>
 </html>
