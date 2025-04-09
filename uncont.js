@@ -30,7 +30,7 @@ function pearsonCorrelation(arr1, arr2) {
 
 
 // Load the data 
-const demographics = d3.csv("diabetes_012_health_indicators_BRFSS2015.csv");
+const demographics = d3.csv("data.csv");
 
 // Once the data is loaded, proceed with plotting
 demographics.then(function(data) {
