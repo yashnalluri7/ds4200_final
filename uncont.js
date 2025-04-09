@@ -204,7 +204,7 @@ function createSankeyDiagram(data) {
 }
 
 // Load and process CSV data
-d3.csv("diabetes_012_health_indicators_BRFSS2015.csv").then(function(data) {
+d3.csv("data.csv").then(function(data) {
     // Sample a random subset of 1000 records
     data = data.sort(() => Math.random() - 0.5).slice(0, 1000);
 
