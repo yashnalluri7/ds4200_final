@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes, Demographic Information</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uncontrollable Diabetes Factors</title>
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
 </head>
@@ -37,44 +37,52 @@
         </div>
     </nav>
 
-    <div id="sankeyPlotContainer">
-        <h2> Immutable Health Indicators of Diabetic Condition </h2>
-    </div>
-    <div id="corrMatrixContainer">
-        <h2> Comparing Immutable Health Indicators Performance</h2>
-        <svg id="svg" width="600" height="400"></svg>
-    </div>
+    <section class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h2>Immutable Health Indicators of Diabetic Condition</h2>
+                <div id="sankeyPlotContainer" class="chart-container">
+                    <svg id="sankeyPlot"></svg>
+                </div>
 
-    <!-- Conclusions Section -->
-    <section class="conclusion-section">
-        <div class="conclusion-container">
-            <h2>Conclusions</h2>
-            <p>
-                The first diagram is a sankey plot that shows the strength of flows from each diagnostic label of diabetes, that being 
-                either No Diabetes, Prediabetic, or Diabetic, to the relative level of the immutable health indicators of the dataset. The 
-                largest input group was the No Diabetes, followed by Diabetic and Prediabetic groups. The distribution of people in each 
-                relative health indicator category was quite even across the dataset. As one would expect of someone with a diagnosis of Diabetes,
-                that category had the highest proportion of relative "bad" indicators, as it had 106 people for High Cholesterol, 106 for having High 
-                Blood Pressure and 94 people for High BMI. These values are much higher in proportion than what can be seen in the Prediabetic and Non Diabetic
-                groups, which lends credibility to the idea that a classification relative "bad" health indicator is somewhat correlated with 
-                a diagnosis of Diabetes.
-            </p>
+                <h2>Comparing Immutable Health Indicators</h2>
+                <div id="corrMatrixContainer" class="chart-container">
+                    <svg id="svg" width="600" height="400"></svg>
+                </div>
 
-            <p> 
-                The second diagram is a correlation matrix between the six "immutable" indicators that we looked at -- High Blood Pressure, 
-                High Cholesterol, BMI, Age, Sex, General Health -- in comparison with the three categories of Diabetes diagnosis. The matrix was 
-                calculated using a Pearson Correlation function, and the scores range between -1 and 1, with the -1 score indicating a perfectly strong 
-                negative correlation of the data, and a 1 indicating a perfectly strong positive correlation. The graph also used a sample size of
-                1000.
-                Some general trends include the weak positive correlation between a Diabetes diagnosis and the six immutable indicators, which would generally
-                not be conclusive enough to prove the hypothesis but hints at a particular trend, especially because the only column to show consistent
-                weak negative correlation is the nondiabetic diagnosis category. Therefore, this graph should encourage more research on this particular
-                type of indicator, and should signify a need for more diverse and specific data.
-            </p>
+                <section class="conclusion-section">
+                    <div class="conclusion-container">
+                        <h2>Conclusions</h2>
+                        <p>
+                            The first diagram is a Sankey plot that shows the strength of flows from each diagnostic label of diabetes—No Diabetes, Prediabetic, or Diabetic—to the relative level of the immutable health indicators. Diabetic individuals had the highest proportion of "bad" indicators like high cholesterol, high blood pressure, and high BMI. This trend supports the correlation between those health indicators and diabetes diagnosis.
+                        </p>
+
+                        <p>
+                            The second diagram is a correlation matrix showing relationships between six immutable indicators: High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health. Calculated using Pearson correlation, the results suggest weak positive correlations with diabetes and weak negative correlation with non-diabetic diagnosis. While not conclusive, it indicates patterns worth further exploration.
+                        </p>
+                    </div>
+                </section>
+            </div>
         </div>
     </section>
-    
 
-    <script src="uncont.js"></script> <!-- Now it contains sankey code too -->
+    <footer>
+        <div class="footer-container">
+            <div class="masthead">
+                <h2>About</h2>
+                <p>Group Contact Info:</p>
+                <p>For questions and concerns</p>
+                <p>All rights reserved</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="mailto:loose.a@northeastern.edu">📧 Andrew's Email</a></li>
+                    <li><a href="mailto:nalluri.y@northeastern.edu">📧 Yash's Email</a></li>
+                    <li><a href="mailto:ecsedy.b@northeastern.edu">📧 Ben's Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <script src="uncont.js"></script>
+    </footer>
 </body>
 </html>
