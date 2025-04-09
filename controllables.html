@@ -10,57 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <style>
-    #barplotContainer {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2rem;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    #barplot {
-      flex: 2;
-      min-width: 500px;
-    }
-
-    #controls {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 300px;
-    }
-
-    #controls label {
-      font-weight: bold;
-    }
-
-    #controls select {
-      width: 100%;
-      padding: 0.4rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .graph-wrapper {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .graph-wrapper img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -76,69 +25,32 @@
         <span class="bar"></span>
       </div>
       <ul class="navbar__menu">
-        <li class="navbar__item">
-          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
-        </li>
-        <li class="navbar__item">
-          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
-        </li>
-        <li class="navbar__item">
-          <a href="analysis.html" class="navbar__links"> Overall Analysis</a>
-        </li>
-        <li class="navbar__btn">
-          <a href="predictor.html" class="button">Test Our Prediction!</a>
-        </li>
-      </ul>
+                <li class="navbar__item">
+                    <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="analysis.html" class="navbar__links"> Overall Analysis</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="predictor.html" class="button">Test Our Prediction!</a>
+                </li>
+            </ul>
     </div>
   </nav>
 
   <!-- Patient Similarity Network Image -->
-  <div id="similarityNetworkContainer" class="graph-wrapper">
+  <div id="similarityNetworkContainer">
     <h2>Patient Similarity Network</h2>
-    <img src="network.png" alt="Patient Similarity Network" />
+    <img src="network.png" width="800" height="800" alt="Patient Similarity Network" />
   </div>
 
-  <!-- Interactive Altair Chart + Controls -->
+  <!-- Interactive Altair Chart -->
   <div id="barplotContainer">
+    <h2>Interactive Distribution of Diabetes Prefactors</h2>
     <div id="barplot"></div>
-    <div id="controls">
-      <label for="education">Education Level:</label>
-      <select id="education">
-        <option>High School or Less</option>
-        <option>Some College</option>
-        <option>Bachelor's or Higher</option>
-      </select>
-
-      <label for="mental">Mental Health Level:</label>
-      <select id="mental">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="income">Income Level:</label>
-      <select id="income">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="fruits">Fruits and Veggies:</label>
-      <select id="fruits">
-        <option>No</option>
-        <option>Yes</option>
-      </select>
-
-      <label for="physical">Physical Health Level:</label>
-      <select id="physical">
-        <option>Low</option>
-        <option>High</option>
-      </select>
-
-      <label for="smoker">Smoker:</label>
-      <select id="smoker">
-        <option>No</option>
-        <option>Yes</option>
-      </select>
-    </div>
   </div>
 
   <!-- Embed chart.json from Altair -->
@@ -151,13 +63,69 @@
     <div class="conclusion-container">
       <h2>Conclusions</h2>
       <p>
-        The Patient Similarity Network plot visualizes a patient subset of 1,000 individuals, where each node represents a patient and is color-coded according to their diabetes classification: blue for no diabetes, orange for pre-diabetes, and red for diabetes. An <b>equal sample</b> of each of the three diabetes diagnoses was taken for this network plot. Each patient is connected to their most similar peer based on a set of six controllable health attributes: whether they smoked, their physical health level, their mental health level, the presence of fruits and veggies in their diet, their income Level, and their education level, and the cosine similarity algorithm was used to determine similarity. In contrast to the non-diabetic majority, red and orange nodes are sparser and tend to appear on the periphery or in smaller, disconnected clusters. These clusters suggest that patients with diabetes often have distinct profiles that set them apart from the general population. However, the network does not display a strong regional concentration of diabetic individuals; instead, they are interspersed throughout the graph, often linked to non-diabetic peers. This distribution may reflect shared behaviors or risk factors among patients with different diagnostic statuses, but that they do not have as much predictive power over determining diabetic status as a model may indicate. Overall, the network highlights the diversity in patient profiles and could be used to identify individuals at higher risk of developing diabetes based on their proximity to diagnosed patients and their similarity based on controllable factors. In turn, this can hopefully convince patients who are predisposed to diabetes to make healthier habits.
+                The Patient Similarity Network plot visualizes a patient
+                subset of 1,000 individuals, where each node represents a
+                patient and is color-coded according to their diabetes
+                classification: blue for no diabetes, orange for pre-diabetes,
+                and red for diabetes. An <b>equal sample</b> of each of the
+                three diabetes diagnoses was taken for this network plot.
+                Each patient is connected to their most
+                similar peer based on a set of six controllable health
+                attributes: whether they smoked, their physical health level,
+                their mental health level, the presence of fruits and veggies
+                in their diet, their income Level, and their education level,
+                and the cosine similarity algorithm was used to determine similarity.
+                In contrast to the non-diabetic majority, red and orange nodes
+                are sparser and tend to appear on the periphery or in smaller,
+                disconnected clusters. These clusters suggest that patients
+                with diabetes often have distinct profiles that set them apart
+                from the general population. However, the network does not
+                display a strong regional concentration of diabetic individuals;
+                instead, they are interspersed throughout the graph, often
+                linked to non-diabetic peers. This distribution may reflect
+                shared behaviors or risk factors among patients with different
+                diagnostic statuses, but that they do not have as much predictive
+                power over determining diabetic status as a model may indicate.
+                Overall, the network highlights the diversity in patient
+                profiles and could be used to identify individuals at
+                higher risk of developing diabetes based on their
+                proximity to diagnosed patients and their similarity based on
+                controllable factors. In turn, this can hopefully convince
+                patients who are predisposed to diabetes to make healthier habits.
       </p>
 
       <p>
-        The interactive visualization is a stacked bar chart displaying the proportion of diabetes classifications across different age groups for a 10,000-patient sample of the dataset, where each diagnosis is represented <b>proportionally</b>. Each bar represents a specific age bucket, with segments colored to indicate individuals with each diabetes diagnosis. The chart is normalized so that the height of each bar sums to 100%, allowing for easy comparison of the relative proportions within each age group. Accompanying the chart are dropdown menus that allow users to filter the data based on various lifestyle and socioeconomic factors, including education level, access to healthcare, heavy drinking, fruit and vegetable consumption, exercise habits, and smoking status. By selecting different combinations of these filters, users can explore how the distribution of diabetes diagnoses changes among specific subgroups of the population, thus deducing how certain lifestyle choices can impact one's probability of being diagnosed with diabetes. For example, selecting “No” under exercise and “Yes” under smoking filters the chart to show only individuals who do not exercise, but do smoke tobacco, updating the proportions accordingly. For most sets of filters, it is clear that the proportion of individuals diagnosed with diabetes increases significantly with age, particularly after the age of 50. This trend underscores the importance of monitoring and managing diabetes risk factors as individuals get older.
+                The interactive visualization is a stacked bar chart displaying
+                the proportion of diabetes classifications across different
+                age groups for a 10,000-patient sample of the dataset, where each
+                diagnosis is represented <b>proportionally</b>. Each bar
+                represents a specific age bucket,
+                with segments colored to indicate individuals with each diabetes
+                diagnosis. The chart is normalized so that the height of each
+                bar sums to 100%, allowing for easy comparison of the relative
+                proportions within each age group. Accompanying the chart are
+                dropdown menus that allow users to filter the data based on
+                various lifestyle and socioeconomic factors, including
+                education level, access to healthcare, heavy drinking,
+                fruit and vegetable consumption, exercise habits, and
+                smoking status. By selecting different combinations of these
+                filters, users can explore how the distribution of diabetes
+                diagnoses changes among specific subgroups of the population,
+                thus deducing how certain lifestyle choices can impact one's
+                probability of being diagnosed with diabetes. For example,
+                selecting “No” under exercise and “Yes” under smoking filters
+                the chart to show only individuals who do not exercise, but do
+                smoke tobacco, updating the proportions accordingly. For most
+                sets of filters, it is clear that the proportion of individuals
+                diagnosed with diabetes increases significantly with age,
+                particularly after the age of 50. This trend underscores the
+                importance of monitoring and managing diabetes risk factors
+                as individuals get older.
       </p>
     </div>
   </section>
+
+  <!-- Custom JS (optional) -->
+  <script src="uncont.js"></script>
 </body>
 </html>
