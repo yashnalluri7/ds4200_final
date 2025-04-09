@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes, Demographic Information</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes, Demographic Information</title>
+
+  <!-- CSS and Vega/Vega-Lite -->
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" id="navbar__logo">
-                <span class="logo-long">Group 26</span>
-                <span class="logo-short">G26</span>
-            </a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="controllables.html" class="navbar__links">Controllable Factors</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="" class="navbar__links"> Overall Analysis</a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="" class="button">Test Our Prediction!</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="similarityNetworkContainer">
-        <h2> Patient Similarity Network </h2>
-        <img src="network.png" width="800" height="800"></img>
-    </div>  
-
-    <div id="barplotContainer">
-        <h2>Interactive Distribution of Diabetes Prefactors</h2>
-        <div id="barplot"></div>
-        <script>
-            vegaEmbed('#vis', 'chart.json').catch(console.error);
-        </script>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
     </div>
-    <!-- Conclusions Section -->
-    <section class="conclusion-section">
-        <div class="conclusion-container">
-            <h2>Conclusions</h2>
-            <p>
+  </nav>
+
+  <!-- Patient Similarity Network Image -->
+  <div id="similarityNetworkContainer">
+    <h2>Patient Similarity Network</h2>
+    <img src="network.png" width="800" height="800" alt="Patient Similarity Network" />
+  </div>
+
+  <!-- Interactive Altair Chart -->
+  <div id="barplotContainer">
+    <h2>Interactive Distribution of Diabetes Prefactors</h2>
+    <div id="barplot"></div>
+  </div>
+
+  <!-- Embed chart.json from Altair -->
+  <script>
+    vegaEmbed('#barplot', 'chart.json').catch(console.error);
+  </script>
+
+  <!-- Conclusion Section -->
+  <section class="conclusion-section">
+    <div class="conclusion-container">
+      <h2>Conclusions</h2>
+      <p>
                 The Patient Similarity Network shows a sample from the 
                 dataset of of 1,000 individuals stratified by diabetes status,
                 where each node represents a patient and is connected to their
@@ -73,9 +81,9 @@
                 patients, calling into question whether these controllable
                 factors play a considerable difference in determining whether a
                 patient has diabetes.
-            </p>
+      </p>
 
-            <p>
+      <p>
                 The interactive visualization is a stacked bar chart displaying
                 the proportion of diabetes classifications across different
                 age groups. Each bar represents a specific age bucket,
@@ -100,11 +108,11 @@
                 particularly after the age of 50. This trend underscores the
                 importance of monitoring and managing diabetes risk factors
                 as individuals get older.
-            </p>
-        </div>
-    </section>
-    
+      </p>
+    </div>
+  </section>
 
-    <script src="uncont.js"></script>
+  <!-- Custom JS (optional) -->
+  <script src="uncont.js"></script>
 </body>
 </html>
