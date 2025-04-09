@@ -47,11 +47,7 @@
         <h2>Interactive Distribution of Diabetes Prefactors</h2>
         <div id="barplot"></div>
         <script>
-            vegaEmbed('#vis', 'stacked_bar.json')
-            .then(function(result) {
-                // Chart is successfully rendered
-            })
-            .catch(console.error);
+            vegaEmbed('#vis', 'chart.json').catch(console.error);
         </script>
     </div>
     <!-- Conclusions Section -->
@@ -80,7 +76,30 @@
             </p>
 
             <p>
-
+                The interactive visualization is a stacked bar chart displaying
+                the proportion of diabetes classifications across different
+                age groups. Each bar represents a specific age bucket,
+                with segments colored to indicate individuals with each diabetes
+                diagnosis. The chart is normalized so that the height of each
+                bar sums to 100%, allowing for easy comparison of the relative
+                proportions within each age group. Accompanying the chart are
+                dropdown menus that allow users to filter the data based on
+                various lifestyle and socioeconomic factors, including
+                education level, access to healthcare, heavy drinking,
+                fruit and vegetable consumption, exercise habits, and
+                smoking status. By selecting different combinations of these
+                filters, users can explore how the distribution of diabetes
+                diagnoses changes among specific subgroups of the population,
+                thus deducing how certain lifestyle choices can impact one's
+                probability of being diagnosed with diabetes. For example,
+                selecting “No” under exercise and “Yes” under smoking filters
+                the chart to show only individuals who do not exercise, but do
+                smoke tobacco, updating the proportions accordingly. For most
+                sets of filters, it is clear that the proportion of individuals
+                diagnosed with diabetes increases significantly with age,
+                particularly after the age of 50. This trend underscores the
+                importance of monitoring and managing diabetes risk factors
+                as individuals get older.
             </p>
         </div>
     </section>
