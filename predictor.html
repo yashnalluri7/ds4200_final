@@ -6,57 +6,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+    .graph-container {
+      background: white;
+      border-radius: 12px;
       padding: 2rem;
+      margin: 3rem auto;
+      max-width: 700px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
-    .container {
-      max-width: 650px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    h2 {
+
+    .graph-container h2 {
+      font-size: 2rem;
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
+
     .form-group {
       margin-bottom: 1rem;
     }
+
     label {
+      font-weight: 600;
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
-    input, select {
+
+    input,
+    select {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.6rem;
       font-size: 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
     }
+
     button {
       width: 100%;
       padding: 0.75rem;
       font-size: 1rem;
-      background-color: #007bff;
+      background-color: #3b82f6;
       color: white;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
     #result {
-      margin-top: 1.5rem;
-      font-weight: bold;
+      margin-top: 2rem;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Predictor Section -->
+  <div class="graph-container">
     <h2>🧠 Diabetes Risk Predictor</h2>
     <form id="predict-form">
       <div class="form-group">
@@ -162,39 +197,38 @@
     <div id="result"></div>
   </div>
 
-  <!-- Load your model -->
   <script src="model.js"></script>
 
   <!-- Prediction logic -->
-<script>
-  document.getElementById("predict-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+  <script>
+    document.getElementById("predict-form").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const input = new Array(22).fill(0);
-    input[3] = parseFloat(document.getElementById("BMI").value);
-    input[18] = parseInt(document.getElementById("Age").value);
-    input[21] = parseInt(document.getElementById("Income").value);
-    input[15] = parseFloat(document.getElementById("PhysHlth").value);
-    input[13] = parseInt(document.getElementById("GenHlth").value);
-    input[20] = parseInt(document.getElementById("Education").value);
-    input[14] = parseFloat(document.getElementById("MentHlth").value);
-    input[4] = parseInt(document.getElementById("Smoker").value);
-    input[0] = parseInt(document.getElementById("HighBP").value);
-    input[17] = parseInt(document.getElementById("Sex").value);
-    input[10] = parseInt(document.getElementById("Fruits").value);
-    input[1] = parseInt(document.getElementById("HighChol").value);
+      const input = new Array(22).fill(0);
+      input[3] = parseFloat(document.getElementById("BMI").value);
+      input[18] = parseInt(document.getElementById("Age").value);
+      input[21] = parseInt(document.getElementById("Income").value);
+      input[15] = parseFloat(document.getElementById("PhysHlth").value);
+      input[13] = parseInt(document.getElementById("GenHlth").value);
+      input[20] = parseInt(document.getElementById("Education").value);
+      input[14] = parseFloat(document.getElementById("MentHlth").value);
+      input[4] = parseInt(document.getElementById("Smoker").value);
+      input[0] = parseInt(document.getElementById("HighBP").value);
+      input[17] = parseInt(document.getElementById("Sex").value);
+      input[10] = parseInt(document.getElementById("Fruits").value);
+      input[1] = parseInt(document.getElementById("HighChol").value);
 
-    const probs = score(input);  // this gives an array
-    const prediction = probs.indexOf(Math.max(...probs));  // find index of max value
+      const probs = score(input);
+      const prediction = probs.indexOf(Math.max(...probs));
 
-    let label = "";
+      let label = "";
 
-    if (prediction === 0) label = "✅ No Diabetes";
-    else if (prediction === 1) label = "⚠️ Prediabetic";
-    else label = "🔴 Diabetic";
+      if (prediction === 0) label = "No Diabetes";
+      else if (prediction === 1) label = "Prediabetic";
+      else label = "Diabetic";
 
-    document.getElementById("result").innerText = "Prediction: " + label;
-  });
-</script>
+      document.getElementById("result").innerText = "Prediction: " + label;
+    });
+  </script>
 </body>
 </html>
