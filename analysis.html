@@ -1,75 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes, Demographic Information</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overall Analysis | Diabetes Indicators</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" id="navbar__logo">
-                <span class="logo-long">Group 26</span>
-                <span class="logo-short">G26</span>
-            </a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="uncont.html" class="navbar__links">uncontrollable</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="" class="navbar__links">controllable</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="" class="navbar__links">analysis</a>
-                </li>
-                <li class="navbar__btn">
-                    <a href="" class="button">test out our prediction!</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- Conclusions Section -->
-    <section class="conclusion-section">
-        <div class="conclusion-container">
-            <h2>Project Conclusions</h2>
-            <p>
-                Our analysis of diabetes health indicators reveals several
-                significant insights about the relationship between diabetes diagnoses and various health factors.
-                We began with the general purpose of seeing if we could determine the likelihood of diabetes to be linked to 
-                several mutable and immutable indicators. 
-            </p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-            <p> 
-                We split the controllable factors and uncontrollable factors evenly from the 12 highest features calculated via a random forest
-                feature importance calculation. A general view of the demographic information of the dataset provides a start towards answering our hypothesis
-                on the likelihood of having a diabetes diagnosis -- for each diagnosis category, there was a notable increase in rate
-                of diagnosis for each category past 50 years of age. However, when we examined each "mutable" and "immutable" factor, these relationships were 
-                harder to define using this dataset. 
-            </p>
-            <p>
-            For the mutable/changeable characteristics, the Patient Similarity Network brought us our most important insight: patients are distributed throughout the network rather than concentrated in specific regions,
-            indicating that controllable factors (smoking, diet, physical/mental health, income, and education) may have less predictive power for diabetes than clinical models suggest.
-            for the immutable/unchangable characteristics, the correlation matrix brough us our strongest insight: a weak positive correlation between diabetes diagnoses and the six immutable health indicators
-            examined (High Blood Pressure, High Cholesterol, BMI, Age, Sex, General Health).
+  <!-- Clean Conclusion Section -->
+  <section class="conclusion-section">
+    <div class="conclusion-container">
+      <h2 style="text-align:center; font-size: 2rem;">Final Project Conclusions</h2>
+      <p>
+        Our analysis of diabetes health indicators reveals several significant insights about the relationship between diabetes diagnoses and various health factors. We began with the general purpose of seeing if we could determine the likelihood of diabetes to be linked to several mutable and immutable indicators. 
+      </p>
 
-            Again, While not conclusive enough to establish strong predictive relationships, the consistent pattern of weak positive correlations with diabetes diagnosis and weak negative correlations with 
-            non-diabetic status suggests a trend worthy of further investigation.
-                
-            </p>
+      <p>
+        We split the controllable and uncontrollable factors evenly from the top 12 features identified via a Random Forest model’s feature importance metric. From a demographic standpoint, age had a clearly increasing effect: for each diagnosis category, the rate of diabetes noticeably increased after age 50. However, when each group of features was examined independently, these relationships became more nuanced.
+      </p>
 
-            <h3> Thank You for listening to our presentation! </h3>
-        </div>
-    </section>
-    
+      <p>
+        📊 <strong>Controllable Factors:</strong> The Patient Similarity Network offered key insights. While diabetic individuals were often linked by similar lifestyles (e.g., smoking, inactivity), they were distributed across the network rather than forming concentrated groups. This suggests that lifestyle-related factors alone do not predict diabetes strongly—especially in a general population.
+      </p>
 
-    <script src="uncont.js"></script> <!-- Now it contains sankey code too -->
+      <p>
+        🧬 <strong>Uncontrollable Factors:</strong> The correlation matrix revealed a consistent—though weak—positive correlation between a diabetes diagnosis and immutable indicators like High Blood Pressure, High Cholesterol, BMI, Age, Sex, and General Health. While the relationship was not strong enough to be definitive, it signals a reliable trend worth investigating further.
+      </p>
+
+      <p>
+        In conclusion, diabetes cannot be attributed to any one factor, but rather a complex blend of both controllable and uncontrollable indicators. Data-driven insights like these can help shape better prevention strategies, guide policy interventions, and personalize healthcare recommendations for those at risk.
+      </p>
+
+      <h3 style="text-align:center; margin-top: 2rem;">Thank you for exploring our project!</h3>
+    </div>
+  </section>
 </body>
 </html>
