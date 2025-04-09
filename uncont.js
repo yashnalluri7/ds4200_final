@@ -1,13 +1,20 @@
 const indicators = [
-    "HighBP", "HighChol", "CholCheck", "BMI",
-    "Stroke", "HeartDiseaseorAttack",
-    "GenHlth", "MentHlth", "PhysHlth", "DiffWalk"
+    "HighBP", "HighChol", "BMI",
+    "Age", "Sex",
+    "GenHlth", 
 ];
 const diabetesLabels = {
     0: "No Diabetes",
     1: "Prediabetic",
     2: "Diabetic"
 };
+
+const extendedIndicators = [
+    "HighBP", "HighChol", "BMI",
+    "Age", "Sex",
+    "GenHlth", 
+    "IsNoDiabetes", "IsPrediabetic", "IsDiabetic"
+];
 
 function pearsonCorrelation(arr1, arr2) {
     const n = arr1.length;
@@ -23,7 +30,7 @@ function pearsonCorrelation(arr1, arr2) {
 
 
 // Load the data 
-const demographics = d3.csv("diabetes_data/diabetes_012_health_indicators_BRFSS2015.csv");
+const demographics = d3.csv("diabetes_012_health_indicators_BRFSS2015.csv");
 
 // Once the data is loaded, proceed with plotting
 demographics.then(function(data) {
@@ -287,13 +294,21 @@ demographics.then(function(data) {
     const corrWidth = 800 - corrMargin.left - corrMargin.right;
     const corrHeight = 800 - corrMargin.top - corrMargin.bottom;
 
+    // Extend Diabetes_012 into separate binary columns
+    data.forEach(d => {
+    d.Diabetes_012 = +d.Diabetes_012;
+    d.IsNoDiabetes = d.Diabetes_012 === 0 ? 1 : 0;
+    d.IsPrediabetic = d.Diabetes_012 === 1 ? 1 : 0;
+    d.IsDiabetic = d.Diabetes_012 === 2 ? 1 : 0;
+    });
+
     // Compute correlation matrix
     const corrData = [];
 
-    for (let i = 0; i < indicators.length; i++) {
-        for (let j = 0; j < indicators.length; j++) {
-            const x = indicators[i];
-            const y = indicators[j];
+    for (let i = 0; i < extendedIndicators.length; i++) {
+        for (let j = 0; j < extendedIndicators.length; j++) {
+            const x = extendedIndicators[i];
+            const y = extendedIndicators[j];
             const xVals = data.map(d => +d[x]);
             const yVals = data.map(d => +d[y]);
             const corr = pearsonCorrelation(xVals, yVals);
@@ -302,12 +317,12 @@ demographics.then(function(data) {
     }
 
     const xCorr = d3.scaleBand()
-        .domain(indicators)
+        .domain(extendedIndicators)
         .range([0, corrWidth])
         .padding(0.05);
 
     const yCorr = d3.scaleBand()
-        .domain(indicators)
+        .domain(extendedIndicators)
         .range([0, corrHeight])
         .padding(0.05);
 
@@ -332,22 +347,61 @@ demographics.then(function(data) {
     svgCorrHeatmap.append("g")
         .call(d3.axisLeft(yCorr));
 
-    // Heatmap cells
-    svgCorrHeatmap.selectAll()
+    // Tooltip div
+    const corrTooltip = d3.select("body").append("div")
+        .style("position", "absolute")
+        .style("background", "#fff")
+        .style("padding", "6px 10px")
+        .style("border", "1px solid #aaa")
+        .style("border-radius", "4px")
+        .style("visibility", "hidden")
+        .style("font-size", "12px");
+
+    // Heatmap cells with interactivity
+    svgCorrHeatmap.selectAll(".corr-cell")
         .data(corrData)
         .enter()
         .append("rect")
+        .attr("class", "corr-cell")
         .attr("x", d => xCorr(d.x))
         .attr("y", d => yCorr(d.y))
         .attr("width", xCorr.bandwidth())
         .attr("height", yCorr.bandwidth())
-        .style("fill", d => colorCorr(d.value));
+        .style("fill", d => colorCorr(d.value))
+        .on("mouseover", function(event, d) {
+            svgCorrHeatmap.selectAll(".corr-cell")
+                .style("opacity", r => r.x === d.x || r.y === d.y ? 1 : 0.15);
 
-    // Values inside cells (optional)
-    svgCorrHeatmap.selectAll()
+            d3.select(this)
+                .style("stroke", "#000")
+                .style("stroke-width", "1.5px");
+
+            corrTooltip
+                .style("visibility", "visible")
+                .html(`
+                    <strong>${d.x} vs ${d.y}</strong><br>
+                    Correlation: <span style="color:${d.value > 0 ? 'green' : 'red'}">${d.value.toFixed(2)}</span>
+                `);
+        })
+        .on("mousemove", function(event) {
+            corrTooltip
+                .style("top", (event.pageY - 10) + "px")
+                .style("left", (event.pageX + 10) + "px");
+        })
+        .on("mouseout", function() {
+            svgCorrHeatmap.selectAll(".corr-cell")
+                .style("opacity", 1)
+                .style("stroke", "none");
+
+            corrTooltip.style("visibility", "hidden");
+        });
+
+    // Number labels
+    svgCorrHeatmap.selectAll(".corr-label")
         .data(corrData)
         .enter()
         .append("text")
+        .attr("class", "corr-label")
         .attr("x", d => xCorr(d.x) + xCorr.bandwidth() / 2)
         .attr("y", d => yCorr(d.y) + yCorr.bandwidth() / 2)
         .attr("text-anchor", "middle")
@@ -362,5 +416,5 @@ demographics.then(function(data) {
         .attr("y", -10)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .text("Correlation Matrix: Health Indicators");
+        .text("Correlation Matrix: Health Indicators + Diabetes Status");
 });
