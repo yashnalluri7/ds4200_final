@@ -85,8 +85,8 @@ function createSankeyDiagram(data) {
     console.log("Generated links:", links);
     
     // Define the dimensions of the Sankey diagram
-    const margin = { top: 20, right: 200, bottom: 30, left: 50 };
-    const width = 1000 - margin.left - margin.right;
+    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    const width = 730;
     const height = 500 - margin.top - margin.bottom;
 
     const svg = d3.select("#sankeyPlotContainer").append("svg")

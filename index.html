@@ -59,13 +59,87 @@
         </ul>
         <br />
 
-        <h3>Feature Importance</h3>
-        <p>Below is a lollipop chart representing the top 12 most important features used to predict diabetes using a Random Forest Classifier.</p>
+        <h3>Feature Analysis</h3>
+        <p>
+          Because the development of diabetes is a complex, multifaceted medical
+          issue, there are many warning signs that can come into play when
+          trying to predict the onset of the disease. Some factors are well
+          within a patient's control, and would serve as the basis for advice
+          given to a patient from their doctor about controlling lifestyle and
+          habits, while some factors are genetically predisposed and not up to
+          the control of the patient. Some factors, however, are somewhere
+          in between. For example, a patient's cholesterol level is somewhat
+          dictated by their diet and exercise choices, yet also many people
+          are genetically predisposed to high cholesterol. Thus, we found it
+          useful in this analysis to divide the most important features into
+          two sections that can be individually addressed by our visualizations
+          and analysis: uncontrollable (or immutable, both are used
+          interchangeably), which represent health/lifestyle predispositions
+          that are fully or mostly out of control of the patient, and
+          controllable (or mutable), which are factors that are fully or mostly
+          in the patient's control. Dividing the factors into these categories
+          not only makes each visualization more cohesive and contextual, but
+          can allow both doctors and patients alike to focus on factors that
+          are actively in the patient's control, while placing potential
+          lifestyle changes within the context of the patient's past/family
+          medical history.
+        </p>
+
+        <br></br>
+
+        <p>
+          But what factors are the most important to analyze in the first
+          place? Below is a lollipop chart representing the top 12 most
+          important features used to predict diabetes using a Random Forest
+          Classifier to determine which features were the most effective
+          and important in predicting the classification of each patient's
+          diabetes status. Thus, of the top 12 most important features,
+          six were placed under the "mutable" category, and the other
+          six under the "immutable" category. 
+        </p>
+
+        <ul class="features" style="padding-left: 40px">
+          <li>Immutable</li>
+          <li>Age</li>
+          <li>Blood Pressure</li>
+          <li>BMI</li>
+          <li>Cholesterol</li>
+          <li>General Health</li>
+          <li>Sex</li>
+
+          <li>Mutable</li>
+          <li>Education</li>
+          <li>Fruits and Vegetables in Diet</li>
+          <li>Income</li>
+          <li>Mental Health</li>
+          <li>Physical Health</li>
+          <li>Smoking Status</li>
+        </ul>
+
+        <p>
+          It is important to note that although it is possible to make
+          lifestyle changes that can impact one's BMI in hopes of mitigating
+          one's risk of diabetes, because there are so many genetic
+          predispositions to one's BMI, and because of all of the
+          interconnectedness that one's BMI has with other health and
+          genetic features, it made the msot sense to group BMI with the other
+          immutable features.
+
+          Furthermore, physical health and mental health are separate from
+          general health, as general health refers to the complex network
+          of genetic disease, family history, lifestyle, and bodily composition.
+          In contrast, physical and mental health are measured simply by
+          identifying the number of days per month that one feels physically
+          or mentally unwell, respectively, which is, for the most part, a
+          mutable quantity. Thus, a high mental/physical health refers to
+          <i>fewer</i> days per month feeling unwell, and a low mental/physical
+          health refers to <i>more</i> days per month feeling unwell.
+        </p>
 
         <!-- Feature Importance in Box -->
         <div class="graph-wrapper">
           <h2 style="margin-top: 0;">Top 12 Feature Importance (Random Forest)</h2>
-          <img src="feature_imp_graph.png" alt="Top 12 Feature Importance Lollipop Chart" style="width: 80%; max-width: 800px" />
+          <img src="feature_imp_graph.png" alt="Top 12 Feature Importance Lollipop Chart" style="width: 80%; max-width: 750px" />
         </div>
 
         <br />

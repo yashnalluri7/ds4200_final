@@ -124,11 +124,46 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.main__content h3 {
+  font-size: 1.5rem;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
 .main__content p {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #475569;
   max-width: 1920px;
   margin: 0 auto;
+}
+
+.main__content ul {
+  font-size: 1.25rem;
+  color: #475569;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* Features on Index Page */
+.features {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-position: inside;
+  padding: 0;
+  margin: 20px;
+}
+
+.two-column-list li {
+  margin-bottom: 10px;
+}
+
+.features li:nth-child(1) {
+  list-style-type: none; 
+}
+
+.features li:nth-child(8) {
+  list-style-type: none; 
 }
 
 /* Footer */
@@ -254,7 +289,7 @@ input,
 select {
   width: 100%;
   padding: 0.6rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
 }
