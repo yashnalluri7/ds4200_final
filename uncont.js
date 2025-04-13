@@ -144,8 +144,8 @@ function createSankeyDiagram(data, selectedIndicators) {
     d3.select("#sankeyPlotContainer").select("svg").remove();
     
     // Define the dimensions of the Sankey diagram
-    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-    const width = 730;
+    const margin = { top: 20, right: 30, bottom: 30, left: 50 }; // Increase right margin
+    const width = 700;
     const height = 500 - margin.top - margin.bottom;
 
     // Create SVG element
@@ -530,8 +530,8 @@ function createCorrelationMatrix(data) {
 
     const corrMargin = { top: 20, right: 30, bottom: 120, left: 100 }; // Increased bottom margin for legend
     const container = document.getElementById("corrMatrixContainer");
-    const corrWidth = 800 - corrMargin.left - corrMargin.right;
-    const corrHeight = 800 - corrMargin.top - corrMargin.bottom;
+    const corrWidth = 740 - corrMargin.left - corrMargin.right;
+    const corrHeight = 740 - corrMargin.top - corrMargin.bottom;
 
     const xCorr = d3.scaleBand()
         .domain(extendedIndicators)
@@ -916,8 +916,8 @@ function createEnhancedSankeyDiagram(data, selectedIndicators) {
     d3.select("#sankeyPlotContainer").select("svg").remove();
     
     // Define the dimensions of the Sankey diagram
-    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-    const width = 730;
+    const margin = { top: 20, right: 30, bottom: 30, left: 50 }; // Increase right margin
+    const width = 700;
     const height = 500 - margin.top - margin.bottom;
 
     // Create SVG element
@@ -1270,8 +1270,8 @@ function createCorrelationMatrix(data) {
     }
 
     const corrMargin = { top: 20, right: 30, bottom: 120, left: 100 }; // Increased bottom margin for legend
-    const corrWidth = 800 - corrMargin.left - corrMargin.right;
-    const corrHeight = 800 - corrMargin.top - corrMargin.bottom;
+    const corrWidth = 740 - corrMargin.left - corrMargin.right;
+    const corrHeight = 740 - corrMargin.top - corrMargin.bottom;
 
     const xCorr = d3.scaleBand()
         .domain(extendedIndicators)
