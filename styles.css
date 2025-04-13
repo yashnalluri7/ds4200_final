@@ -342,3 +342,216 @@ button:hover {
   line-height: 1.6;
   margin-bottom: 15px;
 }
+
+/* ========== SANKEY DIAGRAM STYLES ========== */
+
+/* Node selection controls */
+.node-selection-controls {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease;
+}
+
+.node-selection-controls:hover {
+  transform: scale(1.01);
+}
+
+.node-selection-controls h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #0F172A;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.selection-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.selection-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Modern checkbox design */
+.selection-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #475569;
+  transition: color 0.2s;
+}
+
+.selection-group label:hover {
+  color: #0F172A;
+}
+
+/* Hide default checkbox */
+.selection-group input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Create custom checkbox */
+.selection-group label {
+  position: relative;
+  padding-left: 30px;
+}
+
+.selection-group label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.selection-group input[type="checkbox"]:checked + label::before {
+  background-color: #3B82F6;
+  border-color: #3B82F6;
+}
+
+.selection-group label::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.selection-group input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+}
+
+/* Focus styles for accessibility */
+.selection-group input[type="checkbox"]:focus + label::before {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Update button style for Sankey controls - overriding the full-width button styles */
+#updateSankeyBtn {
+  width: auto;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #3B82F6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.1s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#updateSankeyBtn:hover {
+  background-color: #A855F7;
+}
+
+#updateSankeyBtn:active {
+  transform: translateY(1px);
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  background-color: white;
+  padding: 10px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 100;
+  font-size: 14px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  color: #1E293B;
+}
+
+/* Correlation matrix tooltip */
+#corrTooltip {
+  position: absolute;
+  background: white;
+  padding: 10px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  visibility: hidden;
+  font-size: 14px;
+  z-index: 100;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  color: #1E293B;
+}
+
+/* Legend styles */
+.correlation-legend rect {
+  border-radius: 4px;
+}
+
+/* Enhanced visualization containers */
+#sankeyPlotContainer, 
+#corrMatrixContainer {
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+#sankeyPlotContainer h2, 
+#corrMatrixContainer h2 {
+  margin-bottom: 20px;
+  color: #0F172A;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Node and link styles */
+.node rect {
+  rx: 3px;
+  ry: 3px;
+  cursor: pointer;
+  transition: fill-opacity 0.3s;
+}
+
+.link {
+  transition: stroke-opacity 0.3s;
+}
+
+/* Responsive adjustments for the visualizations */
+@media screen and (max-width: 768px) {
+  .selection-group {
+    width: 100%;
+  }
+  
+  .node-selection-controls {
+    padding: 15px;
+  }
+  
+  #sankeyPlotContainer, 
+  #corrMatrixContainer {
+    padding: 10px;
+    margin: 10px;
+  }
+}
