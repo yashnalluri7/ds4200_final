@@ -101,7 +101,7 @@ function updateSankeyWithSelection() {
     }
     
     // Load and process data with selected indicators
-    d3.csv("diabetes_012_health_indicators_BRFSS2015.csv").then(function(data) {
+    d3.csv("data.csv").then(function(data) {
         // Sample a subset for better performance
         data = data.sort(() => Math.random() - 0.5).slice(0, 1000);
         
