@@ -786,21 +786,6 @@ function initVisualizations() {
 
 // Initialize when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initVisualizations);// Constants for the health indicators and diabetes labels
-const indicators = [
-    "HighBP", "HighChol", "BMI",
-    "Age", "Sex",
-    "GenHlth", 
-];
-const diabetesLabels = {
-    0: "No Diabetes",
-    1: "Prediabetic",
-    2: "Diabetic"
-};
-
-const extendedIndicators = [
-    "HighBP", "HighChol", "BMI", "Age", "Sex", "GenHlth", 
-    "IsNoDiabetes", "IsPrediabetic", "IsDiabetic"
-];
 
 // Pearson correlation function
 function pearsonCorrelation(arr1, arr2) {
