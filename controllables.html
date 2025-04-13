@@ -8,6 +8,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script type="text/javascript"
+    src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+  </script>
   <style>
     .graph-container {
       background: white;
@@ -67,18 +70,33 @@
   <main class="main">
     <div class="main__container">
       <div class="graph-container">
-        <h2>Patient Similarity Network</h2>
-        <img src="network.png" alt="Patient Similarity Network" width="800px" height="800px"/>
+        <div class="network-container">
+          <h2>Patient Similarity Network</h2>
+          <img src="network.png" alt="Patient Similarity Network" width="600px" height="600px"/>
+
+          <p>
+            The connections above show each patient in the sample connected with
+            their most similar other patient. The similarity between two patients
+            was calculated using the cosine similarity algorithm, which takes
+            all of the input features of a patient, normalizes them, then calculates
+            the cosine of the angle between the two vector representations
+            $\vec{A}$ and $\vec{B}$ of the two patients so that the cosine
+            similarity $S_c$ between the patients is given by 
+            $S_c = \frac{\vec{A} \cdot \vec{B}}{|\vec{A}||\vec{B}|}$
+          </p>
+        </div>
       </div>
 
       <div class="graph-container">
         <h2>Interactive Distribution of Diabetes Prefactors</h2>
-        <div id="barplot"></div>
+        <div id="barplot">
+          <script>
+            vegaEmbed('#barplot', 'chart.json').catch(console.error);
+          </script>
+        </div>
       </div>
 
-      <script>
-        vegaEmbed('#barplot', 'chart.json').catch(console.error);
-      </script>
+      <br></br>
 
       <section class="conclusion-section">
         <div class="conclusion-container">
@@ -89,7 +107,14 @@
 
           <p>
             The interactive visualization is a stacked bar chart displaying the proportion of diabetes classifications across different age groups for a 10,000-patient sample of the dataset, where each diagnosis is represented proportionally. Each bar represents a specific age bucket, with segments colored to indicate individuals with each diabetes diagnosis. The chart is normalized so that the height of each bar sums to 100%, allowing for easy comparison of the relative proportions within each age group. Accompanying the chart are dropdown menus that allow users to filter the data based on various lifestyle and socioeconomic factors, including education level, access to healthcare, heavy drinking, fruit and vegetable consumption, exercise habits, and smoking status. By selecting different combinations of these filters, users can explore how the distribution of diabetes diagnoses changes among specific subgroups of the population, thus deducing how certain lifestyle choices can impact one's probability of being diagnosed with diabetes. For example, selecting “No” under exercise and “Yes” under smoking filters the chart to show only individuals who do not exercise, but do smoke tobacco, updating the proportions accordingly. For most sets of filters, it is clear that the proportion of individuals diagnosed with diabetes increases significantly with age, particularly after the age of 50. This trend underscores the importance of monitoring and managing diabetes risk factors as individuals get older.
+            Additionally, by exploring how the distribution of diabetes diagnoses
+            changes as a function of the multiple inputs, one can determine
+            roughly how each feature impacts one's probability of being
+            diagnosed with the disease. For example, all else equal, by
+            increasing the input education level, one can see that the
+            proportion of diabetes diagnoses decreases overall.
           </p>
+
         </div>
       </section>
     </div>

@@ -251,11 +251,13 @@ footer {
   margin-bottom: 1rem;
   margin-top: 1rem;
   color: #1E293B;
+  max-width: 800px;
 }
 
 .graph-wrapper svg {
   display: block;
   margin: 0 auto;
+  max-width: 740px;
 }
 
 /* Predictor Form Container */
@@ -264,7 +266,7 @@ footer {
   border-radius: 12px;
   padding: 2rem;
   margin: 3rem auto;
-  max-width: 700px;
+  max-width: 740px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -273,6 +275,14 @@ footer {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #0F172A;
+  max-width: 740px;
+}
+
+.graph-container p {
+  font-size: 1rem;
+  text-align: center;
+  color: #0F172A;
+  max-width: 740px;
 }
 
 .form-group {
@@ -322,7 +332,7 @@ button:hover {
 /* Conclusion Section */
 .conclusion-section {
   background-color: #F8FAFC;
-  padding: 60px 20px;
+  padding: 0px 0px;
   text-align: left;
   border-top: 2px solid #e2e8f0;
 }
