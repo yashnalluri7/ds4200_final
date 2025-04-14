@@ -5,6 +5,50 @@
   <title>Diabetes Predictor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .predictor-layout {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .graph-container {
+      flex: 1 1 350px;
+      min-width: 300px;
+    }
+
+    .legend-box {
+      flex: 1 1 300px;
+      min-width: 280px;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .legend-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #0F172A;
+    }
+
+    .legend-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .legend-box li {
+      margin-bottom: 1rem;
+    }
+
+    .legend-box strong {
+      color: #1E293B;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -15,43 +59,52 @@
         <span class="logo-short">G26</span>
       </a>
       <ul class="navbar__menu">
-        <li class="navbar__item">
-          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
-        </li>
-        <li class="navbar__item">
-          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
-        </li>
-        <li class="navbar__item">
-          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
-        </li>
-        <li class="navbar__btn">
-          <a href="predictor.html" class="button">Test Our Prediction!</a>
-        </li>
+        <li class="navbar__item"><a href="uncont.html" class="navbar__links">Uncontrollable Factors</a></li>
+        <li class="navbar__item"><a href="controllables.html" class="navbar__links">Controllable Factors</a></li>
+        <li class="navbar__item"><a href="analysis.html" class="navbar__links">Overall Analysis</a></li>
+        <li class="navbar__btn"><a href="predictor.html" class="button">Test Our Prediction!</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Predictor Form -->
+  <!-- Predictor Section -->
   <div class="main">
     <div class="main__container">
-      <div class="graph-container">
-        <h2>Diabetes Risk Predictor</h2>
-        <form id="predict-form">
-          <div class="form-group"><label>BMI:</label><input type="number" id="BMI" required /></div>
-          <div class="form-group"><label>Age:</label><input type="number" id="Age" required /></div>
-          <div class="form-group"><label>Sex (0 = Female, 1 = Male):</label><input type="number" id="Sex" min="0" max="1" required /></div>
-          <div class="form-group"><label>High Cholesterol (0 or 1):</label><input type="number" id="HighChol" min="0" max="1" required /></div>
-          <div class="form-group"><label>High Blood Pressure (0 or 1):</label><input type="number" id="HighBP" min="0" max="1" required /></div>
-          <div class="form-group"><label>General Health (1 = Excellent, 5 = Poor):</label><input type="number" id="GenHlth" min="1" max="5" required /></div>
-          <div class="form-group"><label>Smoker (0 or 1):</label><input type="number" id="Smoker" min="0" max="1" required /></div>
-          <div class="form-group"><label>Physical Health Days (0–30):</label><input type="number" id="PhysHlth" min="0" max="30" required /></div>
-          <div class="form-group"><label>Fruits (0 or 1):</label><input type="number" id="Fruits" min="0" max="1" required /></div>
-          <div class="form-group"><label>Income (1 = Lowest, 8 = Highest):</label><input type="number" id="Income" min="1" max="8" required /></div>
-          <div class="form-group"><label>Mental Health Days (0–30):</label><input type="number" id="MentHlth" min="0" max="30" required /></div>
-          <div class="form-group"><label>Education (1 = Never attended, 6 = College grad):</label><input type="number" id="Education" min="1" max="6" required /></div>
-          <button type="submit">Predict</button>
-        </form>
-        <div id="result"></div>
+      <div class="predictor-layout">
+        <!-- Form -->
+        <div class="graph-container">
+          <h2>Diabetes Risk Predictor</h2>
+          <form id="predict-form">
+            <div class="form-group"><label>BMI:</label><input type="number" id="BMI" required /></div>
+            <div class="form-group"><label>Age:</label><input type="number" id="Age" required /></div>
+            <div class="form-group"><label>Sex (0 = Female, 1 = Male):</label><input type="number" id="Sex" min="0" max="1" required /></div>
+            <div class="form-group"><label>High Cholesterol (0 or 1):</label><input type="number" id="HighChol" min="0" max="1" required /></div>
+            <div class="form-group"><label>High Blood Pressure (0 or 1):</label><input type="number" id="HighBP" min="0" max="1" required /></div>
+            <div class="form-group"><label>General Health (1 = Excellent, 5 = Poor):</label><input type="number" id="GenHlth" min="1" max="5" required /></div>
+            <div class="form-group"><label>Smoker (0 or 1):</label><input type="number" id="Smoker" min="0" max="1" required /></div>
+            <div class="form-group"><label>Physical Health Days (0–30):</label><input type="number" id="PhysHlth" min="0" max="30" required /></div>
+            <div class="form-group"><label>Fruits (0 or 1):</label><input type="number" id="Fruits" min="0" max="1" required /></div>
+            <div class="form-group"><label>Income (1 = Lowest, 8 = Highest):</label><input type="number" id="Income" min="1" max="8" required /></div>
+            <div class="form-group"><label>Mental Health Days (0–30):</label><input type="number" id="MentHlth" min="0" max="30" required /></div>
+            <div class="form-group"><label>Education (1 = Never attended, 6 = College grad):</label><input type="number" id="Education" min="1" max="6" required /></div>
+            <button type="submit">Predict</button>
+          </form>
+          <div id="result"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend-box">
+          <h3>ℹ️ Field Explanations</h3>
+          <ul>
+            <li><strong>High Cholesterol:</strong> 0 = No, 1 = Yes<br />High = ≥ 240 mg/dL</li>
+            <li><strong>High Blood Pressure:</strong> 0 = No, 1 = Yes<br />High = ≥ 130/80 mm Hg</li>
+            <li><strong>General Health:</strong> 1 = Excellent ... 5 = Poor</li>
+            <li><strong>Physical Health Days:</strong> # of days physical health was not good (0–30)</li>
+            <li><strong>Mental Health Days:</strong> # of days mental health was not good (0–30)</li>
+            <li><strong>Income:</strong> 1 = &lt;$10K ... 8 = $75K+</li>
+            <li><strong>Education:</strong> 1 = No school ... 6 = College grad</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -81,7 +134,7 @@
 
       const probs = score(input);
       const prediction = probs.indexOf(Math.max(...probs));
-      const confidence = (probs[prediction] * 100).toFixed(1); 
+      const confidence = (probs[prediction] * 100).toFixed(1);
 
       const labels = ["No Diabetes", "Prediabetic", "Diabetic"];
       result.innerText = `Prediction: ${labels[prediction]} (${confidence}% confidence)`;
@@ -103,10 +156,10 @@
         To improve performance and keep the model lightweight for browser use, we tuned the hyperparameters:
       </p>
       <ul>
-        <li>n_estimators = 35: more trees for better averaging</li>
-        <li>max_depth = 8: deeper trees to learn more complex patterns</li>
-        <li>min_samples_leaf = 5: helps avoid overfitting</li>
-        <li>class_weight = "balanced": compensates for class imbalance</li>
+        <li><code>n_estimators = 35</code>: more trees for better averaging</li>
+        <li><code>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
+        <li><code>min_samples_leaf = 5</code>: helps avoid overfitting</li>
+        <li><code>class_weight = "balanced"</code>: compensates for class imbalance</li>
       </ul>
       <p>
         The model achieved an accuracy of <strong>51.85%</strong> on unseen test data. 
