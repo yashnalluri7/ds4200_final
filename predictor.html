@@ -35,7 +35,7 @@
   <div class="main">
     <div class="main__container">
       <div class="graph-container">
-        <h2>🧠 Diabetes Risk Predictor</h2>
+        <h2>Diabetes Risk Predictor</h2>
         <form id="predict-form">
           <div class="form-group"><label>BMI:</label><input type="number" id="BMI" required /></div>
           <div class="form-group"><label>Age:</label><input type="number" id="Age" required /></div>
@@ -84,14 +84,14 @@
       const confidence = (probs[prediction] * 100).toFixed(1); 
 
       const labels = ["No Diabetes", "Prediabetic", "Diabetic"];
-      result.innerText = `🔍 Prediction: ${labels[prediction]} (${confidence}% confidence)`;
+      result.innerText = `Prediction: ${labels[prediction]} (${confidence}% confidence)`;
     });
   </script>
 
   <!-- Model Explanation -->
   <section class="conclusion-section">
     <div class="conclusion-container">
-      <h2>🔍 About the Prediction Model</h2>
+      <h2>About the Prediction Model</h2>
       <p>
         To build this diabetes predictor, we used a <strong>Random Forest Classifier</strong>,
         a robust machine learning model that combines multiple decision trees to make predictions. 
@@ -103,10 +103,10 @@
         To improve performance and keep the model lightweight for browser use, we tuned the hyperparameters:
       </p>
       <ul>
-        <li><code>n_estimators = 35</code>: more trees for better averaging</li>
-        <li><code>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
-        <li><code>min_samples_leaf = 5</code>: helps avoid overfitting</li>
-        <li><code>class_weight = "balanced"</code>: compensates for class imbalance</li>
+        <li>n_estimators = 35</code>: more trees for better averaging</li>
+        <li>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
+        <li>min_samples_leaf = 5</code>: helps avoid overfitting</li>
+        <li>class_weight = "balanced"</code>: compensates for class imbalance</li>
       </ul>
       <p>
         The model achieved an accuracy of <strong>51.85%</strong> on unseen test data. 
