@@ -97,9 +97,10 @@
 
       const probs = score(input);
       const prediction = probs.indexOf(Math.max(...probs));
+      const confidence = (probs[prediction] * 100).toFixed(1); 
 
       const labels = ["No Diabetes", "Prediabetic", "Diabetic"];
-      result.innerText = `🔍 Prediction: ${labels[prediction]}`;
+      result.innerText = `🔍 Prediction: ${labels[prediction]} (${confidence}% confidence)`;
     });
   </script>
 </body>
