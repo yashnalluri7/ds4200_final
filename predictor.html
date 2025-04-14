@@ -56,6 +56,7 @@
     </div>
   </div>
 
+  <!-- Predictor Script -->
   <script src="model.js"></script>
   <script>
     const form = document.getElementById('predict-form');
@@ -87,10 +88,9 @@
     });
   </script>
 
-  <!-- Predictor Explanation Section -->
-<section class="main">
-  <div class="main__container">
-    <div class="graph-container">
+  <!-- Model Explanation -->
+  <section class="conclusion-section">
+    <div class="conclusion-container">
       <h2>🔍 About the Prediction Model</h2>
       <p>
         To build this diabetes predictor, we used a <strong>Random Forest Classifier</strong>,
@@ -102,7 +102,7 @@
         These features were used to train the model on 80% of the dataset and test it on the remaining 20%. 
         To improve performance and keep the model lightweight for browser use, we tuned the hyperparameters:
       </p>
-      <ul style="padding-left: 1.5rem;">
+      <ul>
         <li><code>n_estimators = 35</code>: more trees for better averaging</li>
         <li><code>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
         <li><code>min_samples_leaf = 5</code>: helps avoid overfitting</li>
@@ -114,7 +114,9 @@
         so users can instantly get predictions in the browser by entering their health data above.
       </p>
     </div>
-  </div>
-</section>
+  </section> 
 </body>
 </html>
+
+
+
