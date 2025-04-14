@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diabetes Prediction Tool</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    #result {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Check Your Diabetes Risk</h1>
+
+  <form id="predictForm">
+    <label>BMI: <input type="number" name="BMI" step="0.1" required /></label>
+    <label>Age: <input type="number" name="Age" required /></label>
+    <label>Sex (0 = Female, 1 = Male): <input type="number" name="Sex" min="0" max="1" required /></label>
+    <label>High Cholesterol (0/1): <input type="number" name="HighChol" min="0" max="1" required /></label>
+    <label>High Blood Pressure (0/1): <input type="number" name="HighBP" min="0" max="1" required /></label>
+    <label>General Health (1 = Excellent, 5 = Poor): <input type="number" name="GenHlth" min="1" max="5" required /></label>
+    <label>Smoker (0 = No, 1 = Yes): <input type="number" name="Smoker" min="0" max="1" required /></label>
+    <label>Physical Health Days (0–30): <input type="number" name="PhysHlth" min="0" max="30" required /></label>
+    <label>Fruits (0 = No, 1 = Yes): <input type="number" name="Fruits" min="0" max="1" required /></label>
+    <label>Income Level (1 = Lowest, 8 = Highest): <input type="number" name="Income" min="1" max="8" required /></label>
+    <label>Mental Health Days (0–30): <input type="number" name="MentHlth" min="0" max="30" required /></label>
+    <label>Education Level (1 = Never attended school, 6 = College grad): <input type="number" name="Education" min="1" max="6" required /></label>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="model.js"></script>
+  <script>
+    const form = document.getElementById('predictForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const input = [];
+
+      for (let value of formData.values()) {
+        input.push(parseFloat(value));
+      }
+
+      const prediction = model.predict([input]);
+      const classes = ["No Diabetes", "Prediabetic", "Diabetic"];
+      result.innerText = `🔍 Prediction: ${classes[prediction]}`;
+    });
+  </script>
+</body>
+</html>
