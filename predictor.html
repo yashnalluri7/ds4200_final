@@ -2,117 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Diabetes Risk Predictor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Predictor</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background-color: #f2f2f2;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    label {
-      display: block;
-      margin: 1rem 0 0.5rem;
-    }
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-top: 1.5rem;
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #result {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Diabetes Prediction Tool</h1>
-    <form id="predict-form">
-      <label>BMI:</label>
-      <input type="number" id="BMI" required />
-      <label>Age:</label>
-      <input type="number" id="Age" required />
-      <label>Sex (0 = Female, 1 = Male):</label>
-      <input type="number" id="Sex" min="0" max="1" required />
-      <label>High Cholesterol (0 or 1):</label>
-      <input type="number" id="HighChol" min="0" max="1" required />
-      <label>High Blood Pressure (0 or 1):</label>
-      <input type="number" id="HighBP" min="0" max="1" required />
-      <label>General Health (1 = Excellent, 5 = Poor):</label>
-      <input type="number" id="GenHlth" min="1" max="5" required />
-      <label>Smoker (0 or 1):</label>
-      <input type="number" id="Smoker" min="0" max="1" required />
-      <label>Physical Health Days (0–30):</label>
-      <input type="number" id="PhysHlth" min="0" max="30" required />
-      <label>Fruits (0 or 1):</label>
-      <input type="number" id="Fruits" min="0" max="1" required />
-      <label>Income (1 = Lowest, 8 = Highest):</label>
-      <input type="number" id="Income" min="1" max="8" required />
-      <label>Mental Health Days (0–30):</label>
-      <input type="number" id="MentHlth" min="0" max="30" required />
-      <label>Education (1 = Never attended, 6 = College grad):</label>
-      <input type="number" id="Education" min="1" max="6" required />
-      <button type="submit">Predict</button>
-    </form>
-    <div id="result"></div>
+  <!-- ✅ Navbar from existing site -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ✅ Predictor Form Section -->
+  <div class="main__container">
+    <div class="graph-container">
+      <h2>🧠 Diabetes Risk Predictor</h2>
+      <form id="predictForm">
+        <div class="form-group"><label>BMI: <input type="number" name="BMI" step="0.1" required /></label></div>
+        <div class="form-group"><label>Age: <input type="number" name="Age" required /></label></div>
+        <div class="form-group"><label>Sex (0 = Female, 1 = Male): <input type="number" name="Sex" min="0" max="1" required /></label></div>
+        <div class="form-group"><label>High Cholesterol (0/1): <input type="number" name="HighChol" min="0" max="1" required /></label></div>
+        <div class="form-group"><label>High Blood Pressure (0/1): <input type="number" name="HighBP" min="0" max="1" required /></label></div>
+        <div class="form-group"><label>General Health (1 = Excellent, 5 = Poor): <input type="number" name="GenHlth" min="1" max="5" required /></label></div>
+        <div class="form-group"><label>Smoker (0/1): <input type="number" name="Smoker" min="0" max="1" required /></label></div>
+        <div class="form-group"><label>Physical Health Days (0–30): <input type="number" name="PhysHlth" min="0" max="30" required /></label></div>
+        <div class="form-group"><label>Fruits (0/1): <input type="number" name="Fruits" min="0" max="1" required /></label></div>
+        <div class="form-group"><label>Income Level (1 = Lowest, 8 = Highest): <input type="number" name="Income" min="1" max="8" required /></label></div>
+        <div class="form-group"><label>Mental Health Days (0–30): <input type="number" name="MentHlth" min="0" max="30" required /></label></div>
+        <div class="form-group"><label>Education Level (1 = Never attended, 6 = College grad): <input type="number" name="Education" min="1" max="6" required /></label></div>
+        <button type="submit">Predict</button>
+      </form>
+      <div id="result"></div>
+    </div>
   </div>
 
+  <!-- ✅ JS Prediction Logic -->
   <script src="model.js"></script>
   <script>
-    const form = document.getElementById('predict-form');
-    const result = document.getElementById('result');
+    const form = document.getElementById("predictForm");
+    const result = document.getElementById("result");
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const input = [
-        parseFloat(document.getElementById("BMI").value),
-        parseInt(document.getElementById("Age").value),
-        parseInt(document.getElementById("Sex").value),
-        parseInt(document.getElementById("HighChol").value),
-        parseInt(document.getElementById("HighBP").value),
-        parseInt(document.getElementById("GenHlth").value),
-        parseInt(document.getElementById("Smoker").value),
-        parseInt(document.getElementById("PhysHlth").value),
-        parseInt(document.getElementById("Fruits").value),
-        parseInt(document.getElementById("Income").value),
-        parseInt(document.getElementById("MentHlth").value),
-        parseInt(document.getElementById("Education").value)
-      ];
+      const formData = new FormData(form);
+      const input = [];
 
-      const probs = score(input);
-      const prediction = probs.indexOf(Math.max(...probs));
+      for (let value of formData.values()) {
+        input.push(parseFloat(value));
+      }
 
-      const labels = ["No Diabetes", "Prediabetic", "Diabetic"];
-      result.innerText = `🔍 Prediction: ${labels[prediction]}`;
+      const prediction = model.predict([input]);
+      const classes = ["No Diabetes", "Prediabetic", "Diabetic"];
+      result.innerText = `🔍 Prediction: ${classes[prediction]}`;
     });
   </script>
+
+  <!-- ✅ Footer reused from index.html -->
+  <footer>
+    <div class="footer-container">
+      <div class="masthead">
+        <h2>About</h2>
+        <p>All rights reserved</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="mailto:loose.a@northeastern.edu">📧 Andrew's Email</a></li>
+          <li><a href="mailto:nalluri.y@northeastern.edu">📧 Yash's Email</a></li>
+          <li><a href="mailto:ecsedy.b@northeastern.edu">📧 Ben's Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </footer>
 </body>
 </html>
