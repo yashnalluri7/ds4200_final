@@ -6,38 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      margin-left: 6px;
-      color: #3B82F6;
-      cursor: pointer;
-      font-weight: bold;
+    .graph-container {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 3rem auto;
+      max-width: 700px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .graph-container h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.6rem;
       font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
 
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 260px;
-      background-color: #0F172A;
-      color: #fff;
-      text-align: left;
-      border-radius: 6px;
-      padding: 10px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%; 
-      left: 50%;
-      margin-left: -130px;
-      opacity: 0;
-      transition: opacity 0.3s;
-      font-size: 0.85rem;
-      line-height: 1.3;
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #60a5fa;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
 
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
+    button:hover {
+      background-color: #f28b82;
+    }
+
+    #result {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -50,10 +75,188 @@
         <span class="logo-short">G26</span>
       </a>
       <ul class="navbar__menu">
-        <li class="navbar__item"><a href="uncont.html" class="navbar__links">Uncontrollable Factors</a></li>
-        <li class="navbar__item"><a href="controllables.html" class="navbar__links">Controllable Factors</a></li>
-        <li class="navbar__item"><a href="analysis.html" class="navbar__links">Overall Analysis</a></li>
-        <li class="navbar__btn"><a href="predictor.html" class="button">Test Our Prediction!</a></li>
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Predictor Section -->
+  <div class="main">
+    <div class="main__container">
+      <div class="graph-container">
+        <h2>🧠 Diabetes Risk Predictor</h2>
+        <form id="predict-form">
+          <!-- form-group blocks unchanged -->
+          <div class="form-group">
+            <label for="BMI">BMI:</label>
+            <input type="number" id="BMI" value="25" step="0.1" required />
+          </div>
+          <div class="form-group">
+            <label for="Age">Age (18–80):</label>
+            <input type="number" id="Age" value="45" required />
+          </div>
+          <div class="form-group">
+            <label for="Sex">Sex:</label>
+            <select id="Sex">
+              <option value="0">Female</option>
+              <option value="1" selected>Male</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="HighChol">High Cholesterol:</label>
+            <select id="HighChol">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="HighBP">High Blood Pressure:</label>
+            <select id="HighBP">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="GenHlth">General Health (1 = Excellent, 5 = Poor):</label>
+            <select id="GenHlth">
+              <option value="1">Excellent</option>
+              <option value="2">Very Good</option>
+              <option value="3" selected>Good</option>
+              <option value="4">Fair</option>
+              <option value="5">Poor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Smoker">Smoker:</label>
+            <select id="Smoker">
+              <option value="0">No</option>
+              <option value="1" selected>Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="PhysHlth">Physical Health (days unwell, 0–30):</label>
+            <input type="number" id="PhysHlth" value="5" min="0" max="30" required />
+          </div>
+          <div class="form-group">
+            <label for="Fruits">Fruit & Veggie Consumption:</label>
+            <select id="Fruits">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Income">Income Level (1–8):</label>
+            <select id="Income">
+              <option value="1">1 (Lowest)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8 (Highest)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="MentHlth">Mental Health (days unwell, 0–30):</label>
+            <input type="number" id="MentHlth" value="5" min="0" max="30" required />
+          </div>
+          <div class="form-group">
+            <label for="Education">Education Level (1–6):</label>
+            <select id="Education">
+              <option value="1">Never Attended</option>
+              <option value="2">Grades 1-8</option>
+              <option value="3">Grades 9-11</option>
+              <option value="4">High School Grad</option>
+              <option value="5" selected>Some College</option>
+              <option value="6">College Graduate</option>
+            </select>
+          </div>
+          <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="model.js"></script>
+  <script>
+    document.getElementById("predict-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = new Array(22).fill(0);
+      input[3] = parseFloat(document.getElementById("BMI").value);
+      input[18] = parseInt(document.getElementById("Age").value);
+      input[21] = parseInt(document.getElementById("Income").value);
+      input[15] = parseFloat(document.getElementById("PhysHlth").value);
+      input[13] = parseInt(document.getElementById("GenHlth").value);
+      input[20] = parseInt(document.getElementById("Education").value);
+      input[14] = parseFloat(document.getElementById("MentHlth").value);
+      input[4] = parseInt(document.getElementById("Smoker").value);
+      input[0] = parseInt(document.getElementById("HighBP").value);
+      input[17] = parseInt(document.getElementById("Sex").value);
+      input[10] = parseInt(document.getElementById("Fruits").value);
+      input[1] = parseInt(document.getElementById("HighChol").value);
+
+      const probs = score(input);
+      const prediction = probs.indexOf(Math.max(...probs));
+
+      let label = "";
+      if (prediction === 0) label = "No Diabetes";
+      else if (prediction === 1) label = "Prediabetic";
+      else label = "Diabetic";
+
+      document.getElementById("result").innerText = "Prediction: " + label;
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Diabetes Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo">
+        <span class="logo-long">Group 26</span>
+        <span class="logo-short">G26</span>
+      </a>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="uncont.html" class="navbar__links">Uncontrollable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="controllables.html" class="navbar__links">Controllable Factors</a>
+        </li>
+        <li class="navbar__item">
+          <a href="analysis.html" class="navbar__links">Overall Analysis</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="predictor.html" class="button">Test Our Prediction!</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -67,136 +270,15 @@
           <div class="form-group"><label>BMI:</label><input type="number" id="BMI" required /></div>
           <div class="form-group"><label>Age:</label><input type="number" id="Age" required /></div>
           <div class="form-group"><label>Sex (0 = Female, 1 = Male):</label><input type="number" id="Sex" min="0" max="1" required /></div>
-          
-          <div class="form-group">
-            <label>
-              High Cholesterol (0 = No, 1 = Yes)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  High cholesterol: total cholesterol ≥ 240 mg/dL<br/>
-                  Normal: &lt; 200 mg/dL<br/>
-                  Borderline: 200–239 mg/dL
-                </span>
-              </span>
-            </label>
-            <input type="number" id="HighChol" min="0" max="1" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              High Blood Pressure (0 = No, 1 = Yes)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  High blood pressure: systolic ≥ 130 or diastolic ≥ 80 mm Hg<br/>
-                  Normal: &lt; 120/80 mm Hg
-                </span>
-              </span>
-            </label>
-            <input type="number" id="HighBP" min="0" max="1" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              General Health
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  1 = Excellent<br/>
-                  2 = Very Good<br/>
-                  3 = Good<br/>
-                  4 = Fair<br/>
-                  5 = Poor
-                </span>
-              </span>
-            </label>
-            <input type="number" id="GenHlth" min="1" max="5" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Smoker (0 = No, 1 = Yes)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  Indicates whether the respondent currently smokes tobacco.
-                </span>
-              </span>
-            </label>
-            <input type="number" id="Smoker" min="0" max="1" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Physical Health Days (0–30)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  Number of days in the past month physical health was not good.<br/>
-                  Range: 0 (none) to 30 (every day)
-                </span>
-              </span>
-            </label>
-            <input type="number" id="PhysHlth" min="0" max="30" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Fruits (0 = No, 1 = Yes)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  Indicates whether the respondent eats fruit at least once per day.
-                </span>
-              </span>
-            </label>
-            <input type="number" id="Fruits" min="0" max="1" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Income
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  1 = &lt;$10K<br/>
-                  2 = $10–15K<br/>
-                  3 = $15–20K<br/>
-                  4 = $20–25K<br/>
-                  5 = $25–35K<br/>
-                  6 = $35–50K<br/>
-                  7 = $50–75K<br/>
-                  8 = $75K+
-                </span>
-              </span>
-            </label>
-            <input type="number" id="Income" min="1" max="8" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Mental Health Days (0–30)
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  Number of days in the past month mental health was not good.<br/>
-                  Range: 0 (none) to 30 (every day)
-                </span>
-              </span>
-            </label>
-            <input type="number" id="MentHlth" min="0" max="30" required />
-          </div>
-
-          <div class="form-group">
-            <label>
-              Education
-              <span class="tooltip">ℹ️
-                <span class="tooltiptext">
-                  1 = Never attended school<br/>
-                  2 = Grades 1–8<br/>
-                  3 = Grades 9–11<br/>
-                  4 = High School Graduate<br/>
-                  5 = Some College<br/>
-                  6 = College Graduate
-                </span>
-              </span>
-            </label>
-            <input type="number" id="Education" min="1" max="6" required />
-          </div>
-
+          <div class="form-group"><label>High Cholesterol (0 or 1):</label><input type="number" id="HighChol" min="0" max="1" required /></div>
+          <div class="form-group"><label>High Blood Pressure (0 or 1):</label><input type="number" id="HighBP" min="0" max="1" required /></div>
+          <div class="form-group"><label>General Health (1 = Excellent, 5 = Poor):</label><input type="number" id="GenHlth" min="1" max="5" required /></div>
+          <div class="form-group"><label>Smoker (0 or 1):</label><input type="number" id="Smoker" min="0" max="1" required /></div>
+          <div class="form-group"><label>Physical Health Days (0–30):</label><input type="number" id="PhysHlth" min="0" max="30" required /></div>
+          <div class="form-group"><label>Fruits (0 or 1):</label><input type="number" id="Fruits" min="0" max="1" required /></div>
+          <div class="form-group"><label>Income (1 = Lowest, 8 = Highest):</label><input type="number" id="Income" min="1" max="8" required /></div>
+          <div class="form-group"><label>Mental Health Days (0–30):</label><input type="number" id="MentHlth" min="0" max="30" required /></div>
+          <div class="form-group"><label>Education (1 = Never attended, 6 = College grad):</label><input type="number" id="Education" min="1" max="6" required /></div>
           <button type="submit">Predict</button>
         </form>
         <div id="result"></div>
@@ -232,14 +314,14 @@
       const confidence = (probs[prediction] * 100).toFixed(1); 
 
       const labels = ["No Diabetes", "Prediabetic", "Diabetic"];
-      result.innerText = Prediction: ${labels[prediction]} (${confidence}% confidence);
+      result.innerText = `Prediction: ${labels[prediction]} (${confidence}% confidence)`;
     });
   </script>
 
   <!-- Model Explanation Section -->
   <section class="conclusion-section">
     <div class="conclusion-container">
-      <h2>About the Prediction Model</h2>
+      <h2>🔍 About the Prediction Model</h2>
       <p>
         To build this diabetes predictor, we used a <strong>Random Forest Classifier</strong>,
         a robust machine learning model that combines multiple decision trees to make predictions. 
@@ -251,10 +333,10 @@
         To improve performance and keep the model lightweight for browser use, we tuned the hyperparameters:
       </p>
       <ul>
-        <li><code>n_estimators = 35</code>: more trees for better averaging</li>
-        <li><code>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
-        <li><code>min_samples_leaf = 5</code>: helps avoid overfitting</li>
-        <li><code>class_weight = "balanced"</code>: compensates for class imbalance</li>
+        <li>n_estimators = 35</code>: more trees for better averaging</li>
+        <li>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
+        <li>min_samples_leaf = 5</code>: helps avoid overfitting</li>
+        <li>class_weight = "balanced"</code>: compensates for class imbalance</li>
       </ul>
       <p>
         The model achieved an accuracy of <strong>51.85%</strong> on unseen test data. 
