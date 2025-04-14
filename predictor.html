@@ -103,5 +103,35 @@
       result.innerText = `🔍 Prediction: ${labels[prediction]} (${confidence}% confidence)`;
     });
   </script>
+
+  <!-- Predictor Explanation Section -->
+<section class="main">
+  <div class="main__container">
+    <div class="graph-container">
+      <h2>🔍 About the Prediction Model</h2>
+      <p>
+        To build this diabetes predictor, we used a <strong>Random Forest Classifier</strong>,
+        a robust machine learning model that combines multiple decision trees to make predictions. 
+        We selected the <strong>top 12 most important features</strong> from our dataset—like 
+        <em>BMI, Age, Blood Pressure, Cholesterol, Smoking, General Health, Education, and Income</em>—based on feature importance analysis.
+      </p>
+      <p>
+        These features were used to train the model on 80% of the dataset and test it on the remaining 20%. 
+        To improve performance and keep the model lightweight for browser use, we tuned the hyperparameters:
+      </p>
+      <ul style="padding-left: 1.5rem;">
+        <li><code>n_estimators = 35</code>: more trees for better averaging</li>
+        <li><code>max_depth = 8</code>: deeper trees to learn more complex patterns</li>
+        <li><code>min_samples_leaf = 5</code>: helps avoid overfitting</li>
+        <li><code>class_weight = "balanced"</code>: compensates for class imbalance</li>
+      </ul>
+      <p>
+        The model achieved an accuracy of <strong>51.85%</strong> on unseen test data. 
+        It was then exported into a lightweight JavaScript version (<code>model.js</code>) 
+        so users can instantly get predictions in the browser by entering their health data above.
+      </p>
+    </div>
+  </div>
+</section>
 </body>
 </html>
